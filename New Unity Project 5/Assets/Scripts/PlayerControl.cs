@@ -45,33 +45,45 @@ public class PlayerControl : MonoBehaviour
 	Vector3 moveDir;
 
 	Rigidbody rb;
+	GameState gameState;
 
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
+		gameState = FindObjectOfType<GameState>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
 
-		if (Input.GetKeyDown(powerUpButton0))
+		if (Input.GetKeyDown(powerUpButton0) && gameState.currentKey == "A")
 		{
-			jumpForce += increaseForce;
-			Debug.Log("PowerUp Button0 pressed by: " + gameObject.name);
+			CurrectKeyPress(powerUpButton0);
 		}
-		if (Input.GetKeyDown(powerUpButton1))
+		if (Input.GetKeyDown(powerUpButton1) && gameState.currentKey == "B")
 		{
-			Debug.Log("PowerUp Button1 pressed by: " + gameObject.name);
+			CurrectKeyPress(powerUpButton1) ;
 		}
-		if (Input.GetKeyDown(powerUpButton2))
+		if (Input.GetKeyDown(powerUpButton2) && gameState.currentKey == "X")
 		{
-			Debug.Log("PowerUp Button2 pressed by: " + gameObject.name);
+			CurrectKeyPress(powerUpButton2);
 		}
-		if (Input.GetKeyDown(powerUpButton3))
+		if (Input.GetKeyDown(powerUpButton3) && gameState.currentKey == "Y")
 		{
-			Debug.Log("PowerUp Button3 pressed by: " + gameObject.name);
+			CurrectKeyPress(powerUpButton3);
 		}
+	}
+
+	void CurrectKeyPress (KeyCode buttonPressed)
+	{
+		jumpForce += increaseForce;
+		gameState.GetNewKey();
+		Debug.Log("PowerUp Button" + buttonPressed + " pressed by: " + gameObject.name);
+	}
+	void WrongKeyPress ()
+	{
+
 	}
 
 	private void FixedUpdate()
