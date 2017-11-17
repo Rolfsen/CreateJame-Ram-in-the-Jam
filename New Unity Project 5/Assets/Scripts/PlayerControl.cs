@@ -43,19 +43,37 @@ public class PlayerControl : MonoBehaviour
 	private float increaseForce;
 	[SerializeField]
 	Vector3 moveDir;
+    [Header("Button mashing difficulty")]
+    [SerializeField]
+    private float additionPerPress = 1.7f;
+    [SerializeField] private float reductionFactor = 1.0f;
 
-	Rigidbody rb;
+    private const float MAX_FORCE = 10.0f;
+    public float currentForce = 0.0f;
+    Rigidbody rb;
 
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 	}
-
-	// Update is called once per frame
-	void Update()
+    KeyCode GetCurrentPowerUpKey()
+    {
+        // This should eventually choose random keys to press every couple secs to allow for differnt buttons to mash
+        return powerUpButton0;
+    }
+    // Update is called once per frame
+    void Update()
 	{
-
-		if (Input.GetKeyDown(powerUpButton0))
+        if (currentForce > 0.4f)
+        {
+            // to make it harder to keep at a high value but easy to keep above zero
+            currentForce -= (((currentForce / MAX_FORCE) * (additionPerPress) / 8) + 0.05f) * reductionFactor;
+        }
+        else
+        {
+            currentForce = 0;
+        }
+        if (Input.GetKeyDown(powerUpButton0))
 		{
 			jumpForce += increaseForce;
 			Debug.Log("PowerUp Button0 pressed by: " + gameObject.name);
@@ -72,7 +90,19 @@ public class PlayerControl : MonoBehaviour
 		{
 			Debug.Log("PowerUp Button3 pressed by: " + gameObject.name);
 		}
-	}
+        if (Input.GetKeyDown(GetCurrentPowerUpKey()))
+        {
+            Debug.Log("Power up key pressed. Current force: " + currentForce);
+            if (currentForce + additionPerPress < MAX_FORCE)
+            {
+                currentForce += additionPerPress;
+            }
+            else
+            {
+                currentForce = additionPerPress;
+            }
+        }
+    }
 
 	private void FixedUpdate()
 	{
