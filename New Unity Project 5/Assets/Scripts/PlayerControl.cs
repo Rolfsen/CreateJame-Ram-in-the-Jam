@@ -21,16 +21,16 @@ public class PlayerControl : MonoBehaviour
 	[SerializeField]
 	private KeyCode attackButton2;
 	[SerializeField]
-	private KeyCode attackpButton3;
+	private KeyCode attackButton3;
 	[Header("Dodge attacks")]
 	[SerializeField]
-	private KeyCode dogdeButton0;
+	private KeyCode dodgeButton0;
 	[SerializeField]
-	private KeyCode dogdeButton1;
+	private KeyCode dodgeButton1;
 	[SerializeField]
-	private KeyCode dogdeButton2;
+	private KeyCode dodgeButton2;
 	[SerializeField]
-	private KeyCode dogdepButton3;
+	private KeyCode dodgeButton3;
 
 	[Header("Player Variables")]
 	[SerializeField]
