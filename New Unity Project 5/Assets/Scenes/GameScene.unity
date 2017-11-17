@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 1071304332}
   - component: {fileID: 1071304331}
   - component: {fileID: 1071304330}
+  - component: {fileID: 1071304335}
   m_Layer: 0
   m_Name: Ram2
   m_TagString: Untagged
@@ -296,6 +297,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1071304335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1071304329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b868b4f0ca9422d499952ba19f77f6fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpButton0: 370
+  powerUpButton1: 371
+  powerUpButton2: 372
+  powerUpButton3: 373
 --- !u!1 &1332020614
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,6 +424,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b868b4f0ca9422d499952ba19f77f6fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpButton0: 350
+  powerUpButton1: 351
+  powerUpButton2: 352
+  powerUpButton3: 353
 --- !u!1 &1491063171
 GameObject:
   m_ObjectHideFlags: 0
