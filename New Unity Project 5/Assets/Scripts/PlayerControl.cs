@@ -84,14 +84,14 @@ public class PlayerControl : MonoBehaviour
 		switch (other.tag)
 		{
 			case ("startJump"):
-				Debug.Log(other.tag);
-				StartJump();
+				StartJump(other);
 				break;
 		}
 	}
 
-	void StartJump()
+	void StartJump(Collider other)
 	{
+		Destroy(other.gameObject);
 		rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
 	}
 }
