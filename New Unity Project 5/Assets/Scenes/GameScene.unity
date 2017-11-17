@@ -112,6 +112,48 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &224352729
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4160374480750826, guid: 04f3341585cdbcd488abe13a153fd791, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -8.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160374480750826, guid: 04f3341585cdbcd488abe13a153fd791, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160374480750826, guid: 04f3341585cdbcd488abe13a153fd791, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160374480750826, guid: 04f3341585cdbcd488abe13a153fd791, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160374480750826, guid: 04f3341585cdbcd488abe13a153fd791, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160374480750826, guid: 04f3341585cdbcd488abe13a153fd791, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160374480750826, guid: 04f3341585cdbcd488abe13a153fd791, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160374480750826, guid: 04f3341585cdbcd488abe13a153fd791, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 04f3341585cdbcd488abe13a153fd791, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &242990573
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +354,14 @@ MonoBehaviour:
   powerUpButton1: 371
   powerUpButton2: 372
   powerUpButton3: 373
+  attackButton0: 0
+  attackButton1: 0
+  attackButton2: 0
+  attackpButton3: 0
+  dogdeButton0: 0
+  dogdeButton1: 0
+  dogdeButton2: 0
+  dogdepButton3: 0
 --- !u!1 &1332020614
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,6 +478,14 @@ MonoBehaviour:
   powerUpButton1: 351
   powerUpButton2: 352
   powerUpButton3: 353
+  attackButton0: 0
+  attackButton1: 0
+  attackButton2: 0
+  attackpButton3: 0
+  dogdeButton0: 0
+  dogdeButton1: 0
+  dogdeButton2: 0
+  dogdepButton3: 0
 --- !u!1 &1491063171
 GameObject:
   m_ObjectHideFlags: 0
