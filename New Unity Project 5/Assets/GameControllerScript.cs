@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameControllerScript : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
+    [Header("Dodge attacks")]
+    [SerializeField]
+    private PlayerControl player1;
+    [SerializeField]
+    private PlayerControl player2;
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
