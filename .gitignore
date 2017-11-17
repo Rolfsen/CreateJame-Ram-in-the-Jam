@@ -22,6 +22,7 @@ ExportedObj/
 *.booproj
 *.svd
 *.pdb
+*.pdb.meta
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -31,4 +32,9 @@ sysinfo.txt
 
 # Builds
 *.apk
+*.symbols.zip
 *.unitypackage
+
+# Mac specific OS files
+.DS_Store
+
