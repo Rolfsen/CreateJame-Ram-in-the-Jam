@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -438,22 +438,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpButton0: 48
-  powerUpButton1: 371
-  powerUpButton2: 372
-  powerUpButton3: 373
+  powerUpButton1: 57
+  powerUpButton2: 56
+  powerUpButton3: 55
   attackButton0: 0
   attackButton1: 0
   attackButton2: 0
-  attackpButton3: 0
-  dogdeButton0: 0
-  dogdeButton1: 0
-  dogdeButton2: 0
-  dogdepButton3: 0
+  attackButton3: 0
+  dodgeButton0: 0
+  dodgeButton1: 0
+  dodgeButton2: 0
+  dodgeButton3: 0
   jumpForce: 0
   moveSpeed: 5
   maxHeight: 0
   increaseForce: 3
   moveDir: {x: -1, y: 0, z: 0}
+  additionPerPress: 1.7
+  reductionFactor: 1
+  currentForce: 0
 --- !u!1 &1332020614
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,22 +570,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpButton0: 49
-  powerUpButton1: 351
-  powerUpButton2: 352
-  powerUpButton3: 353
+  powerUpButton1: 50
+  powerUpButton2: 51
+  powerUpButton3: 52
   attackButton0: 0
   attackButton1: 0
   attackButton2: 0
-  attackpButton3: 0
-  dogdeButton0: 0
-  dogdeButton1: 0
-  dogdeButton2: 0
-  dogdepButton3: 0
+  attackButton3: 0
+  dodgeButton0: 0
+  dodgeButton1: 0
+  dodgeButton2: 0
+  dodgeButton3: 0
   jumpForce: 0
   moveSpeed: 5
   maxHeight: 0
   increaseForce: 3
   moveDir: {x: 1, y: 0, z: 0}
+  additionPerPress: 1.7
+  reductionFactor: 1
+  currentForce: 0
 --- !u!1 &1448339034
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,7 +604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1448339035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,6 +616,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3aea1d33db41b64ead2fe07ba88c117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  player1powerText: {fileID: 0}
+  player2powerText: {fileID: 0}
 --- !u!4 &1448339036
 Transform:
   m_ObjectHideFlags: 0
@@ -621,7 +631,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1491063171
 GameObject:
