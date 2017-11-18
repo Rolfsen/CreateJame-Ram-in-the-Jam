@@ -199,9 +199,11 @@ public class GameState : MonoBehaviour
         if (winningPlayer == 1)
         {
             GetTextObject("Player1Wins").gameObject.SetActive(true);
+            winCam.GetComponent<WinCamScript>().SetWinner(1);
         } else
         {
             GetTextObject("Player2Wins").gameObject.SetActive(true);
+            winCam.GetComponent<WinCamScript>().SetWinner(2);
         }
         mainCam.GetComponent<Camera>().enabled = false;
         winCam.GetComponent<Camera>().enabled = true;
@@ -225,7 +227,7 @@ public class GameState : MonoBehaviour
             }
             else if (player == PlayerControl.PlayerID.player2)
             {
-                int getKey = UnityEngine.Random.Range(0, forceKeys.Count - 1);
+                int getKey = UnityEngine.Random.Range(0, forceKeys.Count);
                 player2Key = forceKeys[getKey];
                 GetTextObject("Player2QTE").text = "\"" + forceKeys[getKey]+"\"";
             }
