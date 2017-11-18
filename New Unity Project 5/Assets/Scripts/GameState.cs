@@ -152,13 +152,13 @@ public class GameState : MonoBehaviour
             {
                 int getKey = UnityEngine.Random.Range(0, forceKeys.Count - 1);
                 player1Key = forceKeys[getKey];
-                GetTextObject("Player1QTE").text = "Player 1 Button: " + forceKeys[getKey];
+                GetTextObject("Player1QTE").text = "\"" + forceKeys[getKey]+"\"";
             }
             else if (player == PlayerControl.PlayerID.player2)
             {
                 int getKey = UnityEngine.Random.Range(0, forceKeys.Count - 1);
                 player2Key = forceKeys[getKey];
-                GetTextObject("Player2QTE").text = "Player 2 Button: " + forceKeys[getKey];
+                GetTextObject("Player2QTE").text = "\"" + forceKeys[getKey]+"\"";
             }
         }
     }
