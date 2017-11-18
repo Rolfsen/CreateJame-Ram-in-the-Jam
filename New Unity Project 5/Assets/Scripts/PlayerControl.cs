@@ -225,6 +225,9 @@ public class PlayerControl : MonoBehaviour
     private void WrongKeyPress(KeyCode ButtonPressed)
     {
 		error.Play();
+        comboJuice = 0;
+        jumpForce -= increaseForce;
+
 		// Bad things happen
     }
 
