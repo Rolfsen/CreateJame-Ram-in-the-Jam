@@ -44,6 +44,11 @@ public class CameraMovementScript : MonoBehaviour {
         // Set camera to new position.
         Vector3 dir = (Camera.main.transform.position - middlePoint).normalized;
         Camera.main.transform.position = middlePoint + dir * (cameraDistance + DISTANCE_MARGIN);
+        Vector3 tempVector = Camera.main.transform.position;
+        tempVector.x = middlePoint.x;
+        tempVector.y = middlePoint.y;
+        transform.position = tempVector;
+
         Camera.main.orthographicSize = cameraDistance + DISTANCE_MARGIN;
     }
 }
