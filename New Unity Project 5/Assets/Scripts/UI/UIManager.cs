@@ -30,6 +30,7 @@ public class UIManager: MonoBehaviour {
 	[SerializeField]
 	EventSystem eventSystem;
 
+	float oldVal;
 
 	private void Start()
 	{
@@ -41,7 +42,7 @@ public class UIManager: MonoBehaviour {
 		{
 			PlayerPrefs.SetFloat("SoundVolume",0.5f);
 		}
-		audioMixer.SetFloat("Master", 0.5f);
+		audioMixer.SetFloat("Vol", 0.5f);
 	}
 
 	public void GoToScene ()
@@ -72,11 +73,15 @@ public class UIManager: MonoBehaviour {
 		if (PlayerPrefs.GetInt("SoundMuted") == 1)
 		{
 			PlayerPrefs.SetInt("SoundMuted", 0);
+			audioMixer.SetFloat("Vol", oldVal);
 		}
 		else
 		{
 			PlayerPrefs.SetFloat("LastVolume", PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 			PlayerPrefs.SetInt("SoundMuted", 1);
+			audioMixer.GetFloat("Vol",out oldVal);
+			audioMixer.SetFloat("Vol", -80f);
+
 		}
 	}
 }
