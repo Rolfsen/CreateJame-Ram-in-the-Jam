@@ -232,6 +232,28 @@ public class PlayerControl : MonoBehaviour
                 mainGameController.PlayerReachedCameraTrigger(this);
                 Debug.Log("Hit Camera Trigger");
                 break;
+            case ("loseTrigger"):
+                // we are over the jam... SLAM
+                this.moveSpeed = 0;
+                Vector3 TempPos = this.GetComponent<Rigidbody>().transform.position;
+                TempPos.x = 0;
+                TempPos.y = 2;
+                TempPos.z = 0;
+                this.GetComponent<Rigidbody>().transform.position = TempPos;
+                //TempPos.y = 0;
+                //this.GetComponent<Rigidbody>().velocity = TempPos;
+                this.isJumping = false;
+                switch (player)
+                {
+                    case PlayerID.player1:
+                        mainGameController.winningPlayer = 2;
+                        break;
+                    case PlayerID.player2:
+                        mainGameController.winningPlayer = 1;
+                        break;
+                }
+                mainGameController.GameEndCinematic();
+                break;
 			default:
 				Debug.LogWarning("Unknown tag: " + other.tag);
 				break;

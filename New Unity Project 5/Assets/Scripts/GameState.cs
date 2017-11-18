@@ -58,7 +58,7 @@ public class GameState : MonoBehaviour
     private bool player2ReachedCameraTrigger = false;
     private bool player1Jumped = false;
     private bool player2Jumped = false;
-    private int winningPlayer = 0;
+    public int winningPlayer = 0;
     [SerializeField]
     private GameObject mainCam;
     [SerializeField]
