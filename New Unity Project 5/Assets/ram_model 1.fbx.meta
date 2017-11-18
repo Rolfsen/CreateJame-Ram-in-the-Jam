@@ -80,27 +80,28 @@ ModelImporter:
     4300012: tail
     7400000: Take 001
     9500000: //RootNode
+    11100000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert3
-    second: {fileID: 2100000, guid: 431a8522bac973f43b9b6e2c28fb359b, type: 2}
+    second: {fileID: 2100000, guid: ef8c11194727e8a4c9e5a5b2c13424e9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert4
-    second: {fileID: 2100000, guid: a493c4a679f7fd14eb969c6cbdb1fe36, type: 2}
+    second: {fileID: 2100000, guid: cfc74997a5c0c644b9e960c03702337b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert5
-    second: {fileID: 2100000, guid: b53380816f4e3b8479cffc6ec9f2d82d, type: 2}
+    second: {fileID: 2100000, guid: 318b3a0fe4346014cbbe594e99a0e820, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert6
-    second: {fileID: 2100000, guid: 67a32b70b93238c4f89be97bb478e38c, type: 2}
+    second: {fileID: 2100000, guid: 060450269a4df6f4cbe349fb96c807e0, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -123,7 +124,7 @@ ModelImporter:
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
-    animationWrapMode: 0
+    animationWrapMode: 2
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
@@ -172,7 +173,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
