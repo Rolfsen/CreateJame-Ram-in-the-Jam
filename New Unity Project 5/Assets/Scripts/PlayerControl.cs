@@ -75,6 +75,10 @@ public class PlayerControl : MonoBehaviour
 	List<AudioSource> jump;
 	[SerializeField]
 	AudioSource Hooves;
+	[SerializeField]
+	AudioSource error;
+	[SerializeField]
+	AudioSource correctPress;
 
 
 	private void Start()
@@ -205,11 +209,13 @@ public class PlayerControl : MonoBehaviour
 
     private void WrongKeyPress(KeyCode ButtonPressed)
     {
-        // Bad things happen
+		error.Play();
+		// Bad things happen
     }
 
     void CorrectKeyPress(KeyCode buttonPressed)
 	{
+		correctPress.Play();
 		jumpForce += increaseForce;
 		gameState.GetNewKey(player);
         if (comboJuice + additionPerPress < MAX_FORCE)

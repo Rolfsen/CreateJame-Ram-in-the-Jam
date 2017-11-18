@@ -69,6 +69,8 @@ public class GameState : MonoBehaviour
 	AudioSource explotion;
 	[SerializeField]
 	AudioSource bgMusic;
+	[SerializeField]
+	List<AudioSource> splatter;
 
     public void PlayerReachedCameraTrigger(PlayerControl player)
     {
@@ -191,6 +193,8 @@ public class GameState : MonoBehaviour
     {
 		bgMusic.Stop();
 		explotion.Play();
+		int i = UnityEngine.Random.Range(0,splatter.Count);
+		splatter[i].Play();
         jumpingPhaseUI.SetActive(true);
         if (winningPlayer == 1)
         {
