@@ -15,7 +15,6 @@ public class MuteCheck : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (PlayerPrefs.GetInt("SoundMuted") == 1)
-
 		{
 			text.text = "Unmute Sound";
 		}
