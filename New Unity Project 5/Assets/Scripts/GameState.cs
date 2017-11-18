@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum GamePhase
 {
@@ -221,7 +222,15 @@ public class GameState : MonoBehaviour
             GetTextObject("JammedIt").gameObject.SetActive(true);
         }
         hasAlreadyLost = true;
+
+		StartCoroutine(GoToMenu());
     }
+
+	IEnumerator GoToMenu()
+	{
+		yield return new WaitForSeconds(5f);
+		SceneManager.LoadScene(0);
+	}
 	public void GetNewKey(PlayerControl.PlayerID player)
 	{
         if (PlayersShareQTEKeys)
