@@ -80,6 +80,15 @@ public class PlayerControl : MonoBehaviour
 	[SerializeField]
 	AudioSource correctPress;
 
+	[Header("Animations")]
+	[SerializeField]
+	List<GameObject> runningModels;
+	[SerializeField]
+	GameObject jumpingModels;
+	[SerializeField]
+	GameObject flyingAnimation;
+
+
 
 	private void Start()
 	{
