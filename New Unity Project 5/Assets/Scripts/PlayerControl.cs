@@ -92,9 +92,10 @@ public class PlayerControl : MonoBehaviour
 
 	private void Start()
 	{
+		Debug.Log(Input.GetJoystickNames().Length);
 		rb = GetComponent<Rigidbody>();
 		gameState = FindObjectOfType<GameState>();
-        if (isUsingController)
+        if (Input.GetJoystickNames().Length >= 1)
         {
             if (player == PlayerID.player1)
             {
