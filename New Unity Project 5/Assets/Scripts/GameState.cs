@@ -58,7 +58,11 @@ public class GameState : MonoBehaviour
     private bool player2ReachedCameraTrigger = false;
     private bool player1Jumped = false;
     private bool player2Jumped = false;
-
+    private int winningPlayer = 0;
+    [SerializeField]
+    private GameObject mainCam;
+    [SerializeField]
+    private GameObject winCam;
     public void PlayerReachedCameraTrigger(PlayerControl player)
     {
         if (player.player == PlayerControl.PlayerID.player1)
@@ -85,7 +89,7 @@ public class GameState : MonoBehaviour
         players[0].player.reduceComboForJump = true;
         players[1].player.reduceComboForJump = true;
         runningPhaseUI.SetActive(false);
-        jumpingPhaseUI.SetActive(false);
+        
         players[0].player.GetComponentInChildren<Camera>().enabled = false;
         players[1].player.GetComponentInChildren<Camera>().enabled = false;
     }
@@ -148,7 +152,19 @@ public class GameState : MonoBehaviour
         }
         if (player1Jumped && player2Jumped)
         {
-
+            float p1score = players[0].player.jumpPowerUsed;
+            float p2score = players[1].player.jumpPowerUsed;
+            if (p1score > p2score)
+            {
+                //p1 wins
+                players[1].player.isLoser = true;
+                winningPlayer = 1;
+            } else
+            {
+                //p2 wins (shh in a draw p2 wins)
+                players[0].player.isLoser = true;
+                winningPlayer = 2;
+            }
         }
     }
     public string GetCurrentKey(PlayerControl.PlayerID player)
@@ -163,6 +179,19 @@ public class GameState : MonoBehaviour
                 //should never happen
                 return "A";
         }
+    }
+    public void GameEndCinematic()
+    {
+        jumpingPhaseUI.SetActive(true);
+        if (winningPlayer == 1)
+        {
+            GetTextObject("Player1Wins").gameObject.SetActive(true);
+        } else
+        {
+            GetTextObject("Player2Wins").gameObject.SetActive(true);
+        }
+        mainCam.GetComponent<Camera>().enabled = false;
+        winCam.GetComponent<Camera>().enabled = true;
     }
 	public void GetNewKey(PlayerControl.PlayerID player)
 	{
