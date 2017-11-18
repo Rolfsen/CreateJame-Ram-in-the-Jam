@@ -1416,7 +1416,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400034, guid: 340d775e9eea28d4eb531fcb25f83674, type: 3}
       propertyPath: m_LocalScale.z
-      value: 15
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 400034, guid: 340d775e9eea28d4eb531fcb25f83674, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -2040,7 +2040,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400034, guid: 340d775e9eea28d4eb531fcb25f83674, type: 3}
       propertyPath: m_LocalScale.z
-      value: 15
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 400034, guid: 340d775e9eea28d4eb531fcb25f83674, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
