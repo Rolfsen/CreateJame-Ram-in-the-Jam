@@ -43,45 +43,47 @@ public class PlayerControl : MonoBehaviour
 	private float increaseForce;
 	[SerializeField]
 	Vector3 moveDir;
-    [Header("Button mashing difficulty")]
-    [SerializeField]
-    private float additionPerPress = 1.7f;
-    [SerializeField] private float reductionFactor = 1.0f;
+	[Header("Button mashing difficulty")]
+	[SerializeField]
+	private float additionPerPress = 1.7f;
+	[SerializeField]
+	private float reductionFactor = 1.0f;
 
-    private const float MAX_FORCE = 10.0f;
-    public float currentForce = 0.0f;
-    Rigidbody rb;
+	private const float MAX_FORCE = 10.0f;
+	public float currentForce = 0.0f;
+	Rigidbody rb;
 	GameState gameState;
+	bool isJumpDone;
 
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 		gameState = FindObjectOfType<GameState>();
 	}
-    KeyCode GetCurrentPowerUpKey()
-    {
-        // This should eventually choose random keys to press every couple secs to allow for differnt buttons to mash
-        return powerUpButton0;
-    }
-    // Update is called once per frame
-    void Update()
+	KeyCode GetCurrentPowerUpKey()
 	{
-        if (currentForce > 0.4f)
-        {
-            // to make it harder to keep at a high value but easy to keep above zero
-            currentForce -= (((currentForce / MAX_FORCE) * (additionPerPress) / 8) + 0.05f) * reductionFactor;
-        }
-        else
-        {
-            currentForce = 0;
-        }
+		// This should eventually choose random keys to press every couple secs to allow for differnt buttons to mash
+		return powerUpButton0;
+	}
+	// Update is called once per frame
+	void Update()
+	{
+		if (currentForce > 0.4f)
+		{
+			// to make it harder to keep at a high value but easy to keep above zero
+			currentForce -= (((currentForce / MAX_FORCE) * (additionPerPress) / 8) + 0.05f) * reductionFactor;
+		}
+		else
+		{
+			currentForce = 0;
+		}
 		if (Input.GetKeyDown(powerUpButton0) && gameState.currentKey == "A")
 		{
 			CurrectKeyPress(powerUpButton0);
 		}
 		if (Input.GetKeyDown(powerUpButton1) && gameState.currentKey == "B")
 		{
-			CurrectKeyPress(powerUpButton1) ;
+			CurrectKeyPress(powerUpButton1);
 		}
 		if (Input.GetKeyDown(powerUpButton2) && gameState.currentKey == "X")
 		{
@@ -91,27 +93,27 @@ public class PlayerControl : MonoBehaviour
 		{
 			CurrectKeyPress(powerUpButton3);
 		}
-        if (Input.GetKeyDown(GetCurrentPowerUpKey()))
-        {
-            Debug.Log("Power up key pressed. Current force: " + currentForce);
-            if (currentForce + additionPerPress < MAX_FORCE)
-            {
-                currentForce += additionPerPress;
-            }
-            else
-            {
-                currentForce = additionPerPress;
-            }
-        }
-    }
+		if (Input.GetKeyDown(GetCurrentPowerUpKey()))
+		{
+			Debug.Log("Power up key pressed. Current force: " + currentForce);
+			if (currentForce + additionPerPress < MAX_FORCE)
+			{
+				currentForce += additionPerPress;
+			}
+			else
+			{
+				currentForce = additionPerPress;
+			}
+		}
+	}
 
-	void CurrectKeyPress (KeyCode buttonPressed)
+	void CurrectKeyPress(KeyCode buttonPressed)
 	{
 		jumpForce += increaseForce;
 		gameState.GetNewKey();
 		Debug.Log("PowerUp Button" + buttonPressed + " pressed by: " + gameObject.name);
 	}
-	void WrongKeyPress ()
+	void WrongKeyPress()
 	{
 
 	}
@@ -128,6 +130,13 @@ public class PlayerControl : MonoBehaviour
 			case ("startJump"):
 				StartJump(other);
 				break;
+			case ("endJump"):
+				EndJump(other.transform.gameObject);
+				break;
+			default:
+				Debug.LogWarning("Unknown tag: " + other.tag);
+				break;
+
 		}
 	}
 
@@ -135,5 +144,14 @@ public class PlayerControl : MonoBehaviour
 	{
 		Destroy(other.gameObject);
 		rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+	}
+	void EndJump(GameObject other)
+	{
+		if (!isJumpDone)
+		{
+			Debug.Log(Time.time);
+			isJumpDone = true;
+			other.GetComponent<Counter>().counter++;
+		}
 	}
 }
