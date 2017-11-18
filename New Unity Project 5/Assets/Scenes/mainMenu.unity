@@ -1175,7 +1175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 1012538856}
-  clip:
+  clips:
   - {fileID: 8300000, guid: 124e48bbbf0554f40b2c023f6632fc4d, type: 3}
   - {fileID: 8300000, guid: e973afcde19c5fd4a981f68cc91d8629, type: 3}
   - {fileID: 8300000, guid: d71c0006cb0455549b8468b13ad49a9f, type: 3}
