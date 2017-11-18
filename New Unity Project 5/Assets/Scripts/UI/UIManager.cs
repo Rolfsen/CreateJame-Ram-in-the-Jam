@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.Audio;
 
 public class UIManager: MonoBehaviour {
 
@@ -17,6 +18,12 @@ public class UIManager: MonoBehaviour {
 	GameObject muteButton;
 	[SerializeField]
 	GameObject playGameButton;
+
+	[SerializeField]
+	private AudioMixer audioMixer;
+
+	[SerializeField]
+	AudioSource explotion;
 
 	
 
@@ -34,10 +41,12 @@ public class UIManager: MonoBehaviour {
 		{
 			PlayerPrefs.SetFloat("SoundVolume",0.5f);
 		}
+		audioMixer.SetFloat("Master", 0.5f);
 	}
 
 	public void GoToScene ()
 	{
+		explotion.Play();
 		SceneManager.LoadScene(sceneName);
 	}
 	public void QuitGame ()
@@ -46,12 +55,14 @@ public class UIManager: MonoBehaviour {
 	}
 	public void Settings ()
 	{
+		explotion.Play();
 		mainMenu.SetActive(false);
 		settingsMenu.SetActive(true);
 		eventSystem.SetSelectedGameObject(muteButton);
 	}
 	public void BackToMain()
 	{
+		explotion.Play();
 		mainMenu.SetActive(true);
 		settingsMenu.SetActive(false);
 		eventSystem.SetSelectedGameObject(playGameButton);
@@ -64,6 +75,7 @@ public class UIManager: MonoBehaviour {
 		}
 		else
 		{
+			PlayerPrefs.SetFloat("LastVolume", PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 			PlayerPrefs.SetInt("SoundMuted", 1);
 		}
 	}

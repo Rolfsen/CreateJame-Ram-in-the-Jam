@@ -22,16 +22,16 @@ public class CameraMovementScript : MonoBehaviour {
     void Start()
     {
         aspectRatio = Screen.width / Screen.height;
-        tanFov = Mathf.Tan(Mathf.Deg2Rad * Camera.main.fieldOfView / 2.0f);
+        tanFov = Mathf.Tan(Mathf.Deg2Rad * this.GetComponent<Camera>().fieldOfView / 2.0f);
     }
 
     void Update()
     {
 
         // Position the camera in the center.
-        Vector3 newCameraPos = Camera.main.transform.position;
+        Vector3 newCameraPos = this.transform.position;
         newCameraPos.x = middlePoint.x;
-        Camera.main.transform.position = newCameraPos;
+        this.transform.position = newCameraPos;
 
         // Find the middle point between players.
         Vector3 vectorBetweenPlayers = player2.transform.position - player1.transform.position;
@@ -42,13 +42,13 @@ public class CameraMovementScript : MonoBehaviour {
         cameraDistance = (distanceBetweenPlayers / 2.0f / aspectRatio) / tanFov;
 
         // Set camera to new position.
-        Vector3 dir = (Camera.main.transform.position - middlePoint).normalized;
-        Camera.main.transform.position = middlePoint + dir * (cameraDistance + DISTANCE_MARGIN);
-        Vector3 tempVector = Camera.main.transform.position;
+        Vector3 dir = (this.transform.position - middlePoint).normalized;
+        this.transform.position = middlePoint + dir * (cameraDistance + DISTANCE_MARGIN);
+        Vector3 tempVector = this.transform.position;
         tempVector.x = middlePoint.x;
         tempVector.y = middlePoint.y;
         transform.position = tempVector;
 
-        Camera.main.orthographicSize = cameraDistance + DISTANCE_MARGIN;
+        this.GetComponent<Camera>().orthographicSize = cameraDistance + DISTANCE_MARGIN;
     }
 }
