@@ -48,42 +48,41 @@ public class PlayerControl : MonoBehaviour
 	private float additionPerPress = 1.7f;
 	[SerializeField]
 	private float reductionFactor = 1.0f;
+    // To make life easier tools;
+    [SerializeField] bool isUsingController;
+    [Header("Game Controller")]
+    [SerializeField] GameState mainGameController;
+    public enum PlayerID { player1, player2 }
+    public PlayerID player;
 
-	private const float MAX_FORCE = 10.0f;
+    private const float MAX_FORCE = 10.0f;
 	public float currentForce = 0.0f;
 	Rigidbody rb;
 	GameState gameState;
 	bool isJumpDone;
 
-	// To make life easier tools;
-	[SerializeField]bool isUsingController;
-	
-	public enum PlayerID {player1, player2}
-	public PlayerID player;
-
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 		gameState = FindObjectOfType<GameState>();
-
-		if (isUsingController)
-		{
-			if (player == PlayerID.player1)
-			{
-				AButton = KeyCode.Joystick1Button0;
-				BButton = KeyCode.Joystick1Button1;
-				XButton = KeyCode.Joystick1Button2;
-				YButton = KeyCode.Joystick1Button3;
-			}
-			else if (player == PlayerID.player2)
-			{
-				AButton = KeyCode.Joystick2Button0;
-				BButton = KeyCode.Joystick2Button1;
-				XButton = KeyCode.Joystick2Button2;
-				YButton = KeyCode.Joystick2Button3;
-			}
-		}
-	}
+        if (isUsingController)
+        {
+            if (player == PlayerID.player1)
+            {
+                AButton = KeyCode.Joystick1Button0;
+                BButton = KeyCode.Joystick1Button1;
+                XButton = KeyCode.Joystick1Button2;
+                YButton = KeyCode.Joystick1Button3;
+            }
+            else if (player == PlayerID.player2)
+            {
+                AButton = KeyCode.Joystick2Button0;
+                BButton = KeyCode.Joystick2Button1;
+                XButton = KeyCode.Joystick2Button2;
+                YButton = KeyCode.Joystick2Button3;
+            }
+        }
+    }
 	KeyCode GetCurrentPowerUpKey()
 	{
 		// This should eventually choose random keys to press every couple secs to allow for differnt buttons to mash
@@ -157,6 +156,10 @@ public class PlayerControl : MonoBehaviour
 			case ("endJump"):
 				EndJump(other.transform.gameObject);
 				break;
+            case ("switchCameraToJump"):
+                mainGameController.PlayerReachedCameraTrigger(this);
+                Debug.Log("Hit Camera Trigger");
+                break;
 			default:
 				Debug.LogWarning("Unknown tag: " + other.tag);
 				break;

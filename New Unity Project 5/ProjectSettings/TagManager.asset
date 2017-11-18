@@ -6,6 +6,7 @@ TagManager:
   tags:
   - startJump
   - endJump
+  - switchCameraToJump
   layers:
   - Default
   - TransparentFX
