@@ -81,7 +81,6 @@ public class UIManager: MonoBehaviour {
 			PlayerPrefs.SetInt("SoundMuted", 1);
 			audioMixer.GetFloat("Vol",out oldVal);
 			audioMixer.SetFloat("Vol", -80f);
-
 		}
 	}
 }

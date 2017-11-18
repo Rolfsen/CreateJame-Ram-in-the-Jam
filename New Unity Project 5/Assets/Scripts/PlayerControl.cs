@@ -68,7 +68,14 @@ public class PlayerControl : MonoBehaviour
     private bool isJumping=false;
     public bool isLoser=false;
 
-    private void Start()
+	[Header("Sounds")]
+	[SerializeField]
+	List<AudioSource> glassCollision;
+	[SerializeField]
+	List<AudioSource> jump;
+
+
+	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 		gameState = FindObjectOfType<GameState>();
@@ -254,6 +261,10 @@ public class PlayerControl : MonoBehaviour
                 }
                 mainGameController.GameEndCinematic();
                 break;
+			case ("jam"):
+				int i = UnityEngine.Random.Range(0, jump.Count - 1);
+				glassCollision[i].Play();
+				break;
 			default:
 				Debug.LogWarning("Unknown tag: " + other.tag);
 				break;
@@ -262,6 +273,9 @@ public class PlayerControl : MonoBehaviour
 
 	void StartJump(Collider other)
 	{
+
+		int i = UnityEngine.Random.Range(0,jump.Count-1);
+		jump[i].Play();
 		Destroy(other.gameObject);
         jumpPowerUsed = jumpForce + (comboJuice * comboFactor);
         rb.AddForce(new Vector3(0, jumpPowerUsed, 0), ForceMode.Impulse);
