@@ -65,6 +65,10 @@ public class PlayerControl : MonoBehaviour
 	GameState gameState;
 	bool isJumpDone;
 
+	// Sounds
+	[SerializeField]
+	private AudioSource soundTest;
+
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
@@ -165,6 +169,7 @@ public class PlayerControl : MonoBehaviour
 
     void CorrectKeyPress(KeyCode buttonPressed)
 	{
+		EventManager.TriggerEvent("SoundBoing1", soundTest);
 		jumpForce += increaseForce;
 		gameState.GetNewKey(player);
         if (comboJuice + additionPerPress < MAX_FORCE)
