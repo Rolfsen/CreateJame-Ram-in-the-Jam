@@ -65,6 +65,7 @@ public class GameState : MonoBehaviour
     private GameObject winCam;
 
     private bool hasAlreadyLost = false;
+    public bool blockJam = false;
 
 	[Header("Sounds")]
 	[SerializeField]
@@ -193,7 +194,10 @@ public class GameState : MonoBehaviour
     }
     public void GameEndCinematic()
     {
-        
+        if (blockJam)
+        {
+            return;
+        }
 		bgMusic.Stop();
 		explotion.Play();
 		int i = UnityEngine.Random.Range(0,splatter.Count);
