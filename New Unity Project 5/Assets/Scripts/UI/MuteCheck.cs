@@ -23,6 +23,5 @@ public class MuteCheck : MonoBehaviour {
 		{
 			text.text = "Mute Sound";
 		}
-		Debug.Log(PlayerPrefs.GetInt("SoundMuted"));
 	}
 }

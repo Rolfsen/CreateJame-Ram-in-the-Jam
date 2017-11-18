@@ -30,6 +30,10 @@ public class UIManager: MonoBehaviour {
 		{
 			PlayerPrefs.SetInt("SoundMuted", 0);
 		}
+		if (!PlayerPrefs.HasKey("SoundVolume"))
+		{
+			PlayerPrefs.SetFloat("SoundVolume",0.5f);
+		}
 	}
 
 	public void GoToScene ()
