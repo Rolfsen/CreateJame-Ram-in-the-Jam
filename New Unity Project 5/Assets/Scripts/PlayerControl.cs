@@ -6,13 +6,13 @@ public class PlayerControl : MonoBehaviour
 {
 	[Header("Increase Ram Force")]
 	[SerializeField]
-	private KeyCode AButton;
+	private KeyCode powerUpButton0;
 	[SerializeField]
-	private KeyCode BButton;
+	private KeyCode powerUpButton1;
 	[SerializeField]
-	private KeyCode XButton;
+	private KeyCode powerUpButton2;
 	[SerializeField]
-	private KeyCode YButton;
+	private KeyCode powerUpButton3;
 	[Header("Attack Other Ram")]
 	[SerializeField]
 	private KeyCode attackButton0;
@@ -55,39 +55,15 @@ public class PlayerControl : MonoBehaviour
 	GameState gameState;
 	bool isJumpDone;
 
-	// To make life easier tools;
-	[SerializeField]bool isUsingController;
-	
-	public enum PlayerID {player1, player2}
-	public PlayerID player;
-
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 		gameState = FindObjectOfType<GameState>();
-
-		if (isUsingController)
-		{
-			if (player == PlayerID.player1)
-			{
-				AButton = KeyCode.Joystick1Button0;
-				BButton = KeyCode.Joystick1Button1;
-				XButton = KeyCode.Joystick1Button2;
-				YButton = KeyCode.Joystick1Button3;
-			}
-			else if (player == PlayerID.player2)
-			{
-				AButton = KeyCode.Joystick2Button0;
-				BButton = KeyCode.Joystick2Button1;
-				XButton = KeyCode.Joystick2Button2;
-				YButton = KeyCode.Joystick2Button3;
-			}
-		}
 	}
 	KeyCode GetCurrentPowerUpKey()
 	{
 		// This should eventually choose random keys to press every couple secs to allow for differnt buttons to mash
-		return AButton;
+		return powerUpButton0;
 	}
 	// Update is called once per frame
 	void Update()
@@ -101,21 +77,21 @@ public class PlayerControl : MonoBehaviour
 		{
 			currentForce = 0;
 		}
-		if (Input.GetKeyDown(AButton) && gameState.currentKey == "A")
+		if (Input.GetKeyDown(powerUpButton0) && gameState.currentKey == "A")
 		{
-			CurrectKeyPress(AButton);
+			CurrectKeyPress(powerUpButton0);
 		}
-		if (Input.GetKeyDown(BButton) && gameState.currentKey == "B")
+		if (Input.GetKeyDown(powerUpButton1) && gameState.currentKey == "B")
 		{
-			CurrectKeyPress(BButton);
+			CurrectKeyPress(powerUpButton1);
 		}
-		if (Input.GetKeyDown(XButton) && gameState.currentKey == "X")
+		if (Input.GetKeyDown(powerUpButton2) && gameState.currentKey == "X")
 		{
-			CurrectKeyPress(XButton);
+			CurrectKeyPress(powerUpButton2);
 		}
-		if (Input.GetKeyDown(YButton) && gameState.currentKey == "Y")
+		if (Input.GetKeyDown(powerUpButton3) && gameState.currentKey == "Y")
 		{
-			CurrectKeyPress(YButton);
+			CurrectKeyPress(powerUpButton3);
 		}
 		if (Input.GetKeyDown(GetCurrentPowerUpKey()))
 		{
