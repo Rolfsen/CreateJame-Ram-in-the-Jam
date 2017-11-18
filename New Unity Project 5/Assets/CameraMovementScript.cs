@@ -9,7 +9,7 @@ public class CameraMovementScript : MonoBehaviour {
     [SerializeField]
     private PlayerControl player2;
     [SerializeField]
-    private const float DISTANCE_MARGIN = 5.0f;
+    private const float DISTANCE_MARGIN = 2.0f;
 
     private Vector3 middlePoint;
     private float distanceFromMiddlePoint;
@@ -44,6 +44,11 @@ public class CameraMovementScript : MonoBehaviour {
         // Set camera to new position.
         Vector3 dir = (Camera.main.transform.position - middlePoint).normalized;
         Camera.main.transform.position = middlePoint + dir * (cameraDistance + DISTANCE_MARGIN);
+        Vector3 tempVector = Camera.main.transform.position;
+        tempVector.x = middlePoint.x;
+        tempVector.y = middlePoint.y;
+        transform.position = tempVector;
+
         Camera.main.orthographicSize = cameraDistance + DISTANCE_MARGIN;
     }
 }

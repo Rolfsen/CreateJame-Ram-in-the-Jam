@@ -25,7 +25,16 @@ public class GameState : MonoBehaviour
     [SerializeField]
     private GameObject jumpingPhaseUI;
     [SerializeField]
+    private Slider sliderPlayer1;
+    [SerializeField]
+    private Slider sliderPlayer2;
+    [SerializeField]
+    private GameObject JamObject;
+    [SerializeField]
     public bool PlayersShareQTEKeys = false;
+
+    private float p1Distance;
+    private float p2Distance;
     [System.Serializable]
 	struct PlayerData
 	{
@@ -34,7 +43,8 @@ public class GameState : MonoBehaviour
 	}
 	[SerializeField]
     PlayerData[] players;
-
+    [SerializeField]
+    public Font font;
     [System.Serializable]
     struct TextData
     {
@@ -82,6 +92,19 @@ public class GameState : MonoBehaviour
 		Physics.gravity = gravity;
 		GetNewKey(PlayerControl.PlayerID.player1);
         GetNewKey(PlayerControl.PlayerID.player2);
+
+        p1Distance = Vector3.Distance(players[0].player.transform.position, JamObject.transform.position);
+        p2Distance = Vector3.Distance(players[1].player.transform.position, JamObject.transform.position);
+
+        Debug.Log("Distance p1 to jam is: " + p1Distance);
+        Debug.Log("Distance p2 to jam is: " + p2Distance);
+
+        GameObject newGO = new GameObject("myTextGO");
+        newGO.transform.SetParent(runningPhaseUI.transform);
+
+        Text myText = newGO.AddComponent<Text>();
+        myText.font = font;
+        myText.text = "Ta-dah!";
     }
     public Text GetTextObject(string name)
     {
@@ -91,11 +114,13 @@ public class GameState : MonoBehaviour
     }
 	private void Update()
 	{
-        GetTextObject("Player1Speed").text = "Player 1 Jump Force: " + players[0].player.jumpForce;
-        GetTextObject("Player2Speed").text = "Player 2 Jump Force: " + players[1].player.jumpForce;
+        GetTextObject("Player1Speed").text = "Player 1 Jump Force: " + Math.Round(players[0].player.jumpForce,2);
+        GetTextObject("Player2Speed").text = "Player 2 Jump Force: " + Math.Round(players[1].player.jumpForce,2);
 
-        GetTextObject("Player1ComboJuice").text = "Player 1 Combo: " + players[0].player.comboJuice;
-        GetTextObject("Player2ComboJuice").text = "Player 2 Combo: " + players[1].player.comboJuice;
+        GetTextObject("Player1ComboJuice").text = "Player 1 Combo: " + Math.Round(players[0].player.comboJuice,2);
+        GetTextObject("Player2ComboJuice").text = "Player 2 Combo: " + Math.Round(players[1].player.comboJuice,2);
+
+        //sliderPlayer1.value = initialDistance/
 
         for (int i = 0; i < players.Length; i++)
 		{
@@ -124,24 +149,24 @@ public class GameState : MonoBehaviour
 	{
         if (PlayersShareQTEKeys)
         {
-            int getKey = UnityEngine.Random.Range(0, forceKeys.Count - 1);
+            int getKey = UnityEngine.Random.Range(0, forceKeys.Count);
             player1Key = forceKeys[getKey];
             player2Key = forceKeys[getKey];
-            GetTextObject("Player1QTE").text = "Player 1 Button: " + forceKeys[getKey];
-            GetTextObject("Player2QTE").text = "Player 2 Button: " + forceKeys[getKey];
+            GetTextObject("Player1QTE").text = "\"" + forceKeys[getKey]+"\"";
+            GetTextObject("Player2QTE").text = "\"" + forceKeys[getKey]+"\"";
         } else
         {
             if (player == PlayerControl.PlayerID.player1)
             {
-                int getKey = UnityEngine.Random.Range(0, forceKeys.Count - 1);
+                int getKey = UnityEngine.Random.Range(0, forceKeys.Count);
                 player1Key = forceKeys[getKey];
-                GetTextObject("Player1QTE").text = "Player 1 Button: " + forceKeys[getKey];
+                GetTextObject("Player1QTE").text = "\"" + forceKeys[getKey]+"\"";
             }
             else if (player == PlayerControl.PlayerID.player2)
             {
                 int getKey = UnityEngine.Random.Range(0, forceKeys.Count - 1);
                 player2Key = forceKeys[getKey];
-                GetTextObject("Player2QTE").text = "Player 2 Button: " + forceKeys[getKey];
+                GetTextObject("Player2QTE").text = "\"" + forceKeys[getKey]+"\"";
             }
         }
     }

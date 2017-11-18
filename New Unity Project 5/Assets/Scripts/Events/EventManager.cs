@@ -74,7 +74,6 @@ public class EventManager : MonoBehaviour
 
 	public static void RemoveAllListerners()
 	{
-		// Call Stop listening for all in event Dicionary
 		instance.eventDictionary.Clear();
 	}
 

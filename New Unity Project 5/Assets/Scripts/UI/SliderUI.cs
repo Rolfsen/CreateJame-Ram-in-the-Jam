@@ -30,5 +30,6 @@ public class SliderUI : MonoBehaviour
 	public void UpdateSoundVolume()
 	{
 		PlayerPrefs.SetFloat("SoundVolume", slider.value);
+		FindObjectOfType<SoundPlayer>().VolumeChanged();
 	}
 }
