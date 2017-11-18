@@ -13,7 +13,7 @@ public class EventExampleTrigger : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.A))
 		{
-			EventManager.TriggerEvent("DebugEvent", message);
+			EventManager.TriggerEvent("DebugEvent");
 		}
 	}
 }

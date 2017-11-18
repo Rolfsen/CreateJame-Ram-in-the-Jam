@@ -25,8 +25,8 @@ public class EventExampleListener : MonoBehaviour
 	}
 
 	// Function To Be Executed
-	private void DebugEvent(object e)
+	private void DebugEvent()
 	{
-		Debug.Log(e);
+		Debug.Log("");
 	}
 }
