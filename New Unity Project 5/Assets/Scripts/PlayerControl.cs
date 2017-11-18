@@ -64,6 +64,7 @@ public class PlayerControl : MonoBehaviour
 	Rigidbody rb;
 	GameState gameState;
 	bool isJumpDone;
+    public float jumpPowerUsed;
     private bool isJumping=false;
     public bool isLoser=false;
 
@@ -169,9 +170,11 @@ public class PlayerControl : MonoBehaviour
                         // we are over the jam... SLAM
                         this.moveSpeed = 0;
                         Vector3 TempVel = this.GetComponent<Rigidbody>().velocity;
-                        TempVel.y *= 2;
+                        TempVel.y *= -2;
+                        TempVel.y = -Math.Abs(TempVel.y);
                         this.GetComponent<Rigidbody>().velocity = TempVel;
-
+                        this.isJumping = false;
+                        mainGameController.GameEndCinematic();
                     }
                     break;
                 case PlayerID.player2:
@@ -180,8 +183,11 @@ public class PlayerControl : MonoBehaviour
                         // we are over the jam... SLAM
                         this.moveSpeed = 0;
                         Vector3 TempVel = this.GetComponent<Rigidbody>().velocity;
-                        TempVel.y *= 2;
+                        TempVel.y *= -2;
+                        TempVel.y = -Math.Abs(TempVel.y);
                         this.GetComponent<Rigidbody>().velocity = TempVel;
+                        this.isJumping = false;
+                        mainGameController.GameEndCinematic();
                     }
                     break;
             }
@@ -235,10 +241,11 @@ public class PlayerControl : MonoBehaviour
 	void StartJump(Collider other)
 	{
 		Destroy(other.gameObject);
-        mainGameController.InformOfJump(player);
-        rb.AddForce(new Vector3(0, jumpForce+(comboJuice*comboFactor), 0), ForceMode.Impulse);
+        jumpPowerUsed = jumpForce + (comboJuice * comboFactor);
+        rb.AddForce(new Vector3(0, jumpPowerUsed, 0), ForceMode.Impulse);
         Debug.Log("JUMP! used " + jumpForce + " of jump force and " + (comboJuice * comboFactor) + " of combo juice");
         isJumping = true;
+        mainGameController.InformOfJump(player);
 	}
 	void EndJump(GameObject other)
 	{

@@ -29,7 +29,7 @@ public class CameraMovementScript : MonoBehaviour {
     {
 
         // Position the camera in the center.
-        Vector3 newCameraPos = Camera.main.transform.position;
+        Vector3 newCameraPos = this.transform.position;
         newCameraPos.x = middlePoint.x;
         Camera.main.transform.position = newCameraPos;
 
