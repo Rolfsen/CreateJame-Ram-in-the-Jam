@@ -197,6 +197,8 @@ public class PlayerControl : MonoBehaviour
                         this.GetComponent<Rigidbody>().velocity = TempVel;
                         this.isJumping = false;
                         mainGameController.GameEndCinematic();
+                        mainGameController.blockJam = true;
+                        
                     }
                     break;
                 case PlayerID.player2:
@@ -210,6 +212,7 @@ public class PlayerControl : MonoBehaviour
                         this.GetComponent<Rigidbody>().velocity = TempVel;
                         this.isJumping = false;
                         mainGameController.GameEndCinematic();
+                        mainGameController.blockJam = true;
                     }
                     break;
             }
