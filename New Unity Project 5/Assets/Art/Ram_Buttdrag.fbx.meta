@@ -1,0 +1,248 @@
+fileFormatVersion: 2
+guid: 50b1563b3bf19df4c94a16bb1928c7f4
+timeCreated: 1511048754
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Body
+    100002: Eye_balls
+    100004: Eyes
+    100006: Head
+    100008: Head 1
+    100010: Headjoint
+    100012: Horn_left
+    100014: Horn_right
+    100016: joint1
+    100018: joint10
+    100020: joint12
+    100022: joint12 1
+    100024: joint12 2
+    100026: joint12 3
+    100028: joint13
+    100030: joint13 1
+    100032: joint13 2
+    100034: joint13 3
+    100036: joint2
+    100038: joint3
+    100040: joint4
+    100042: joint4 1
+    100044: joint4 2
+    100046: joint4 3
+    100048: joint4 4
+    100050: joint6
+    100052: joint8
+    100054: joint9
+    100056: l_behindleg
+    100058: l_frontleg
+    100060: Legs
+    100062: pCube3
+    100064: pCube4
+    100066: pCube5
+    100068: pCube6
+    100070: polySurface1
+    100072: polySurface1 1
+    100074: polySurface2
+    100076: polySurface3
+    100078: polySurface4
+    100080: polySurface5
+    100082: polySurface6
+    100084: polySurface7
+    100086: pSphere1
+    100088: pSphere2
+    100090: pSphere3
+    100092: pSphere4
+    100094: r_behindleg
+    100096: r_frontleg
+    100098: Ram3
+    100100: //RootNode
+    100102: Ram_Head
+    100104: Ram_rig1
+    100106: tail
+    100108: transform1
+    100110: transform10
+    100112: transform11
+    100114: transform12
+    100116: transform13
+    100118: transform14
+    100120: transform15
+    100122: transform16
+    100124: transform17
+    100126: transform2
+    100128: transform3
+    100130: transform4
+    100132: transform5
+    100134: transform6
+    100136: transform7
+    400000: Body
+    400002: Eye_balls
+    400004: Eyes
+    400006: Head
+    400008: Head 1
+    400010: Headjoint
+    400012: Horn_left
+    400014: Horn_right
+    400016: joint1
+    400018: joint10
+    400020: joint12
+    400022: joint12 1
+    400024: joint12 2
+    400026: joint12 3
+    400028: joint13
+    400030: joint13 1
+    400032: joint13 2
+    400034: joint13 3
+    400036: joint2
+    400038: joint3
+    400040: joint4
+    400042: joint4 1
+    400044: joint4 2
+    400046: joint4 3
+    400048: joint4 4
+    400050: joint6
+    400052: joint8
+    400054: joint9
+    400056: l_behindleg
+    400058: l_frontleg
+    400060: Legs
+    400062: pCube3
+    400064: pCube4
+    400066: pCube5
+    400068: pCube6
+    400070: polySurface1
+    400072: polySurface1 1
+    400074: polySurface2
+    400076: polySurface3
+    400078: polySurface4
+    400080: polySurface5
+    400082: polySurface6
+    400084: polySurface7
+    400086: pSphere1
+    400088: pSphere2
+    400090: pSphere3
+    400092: pSphere4
+    400094: r_behindleg
+    400096: r_frontleg
+    400098: Ram3
+    400100: //RootNode
+    400102: Ram_Head
+    400104: Ram_rig1
+    400106: tail
+    400108: transform1
+    400110: transform10
+    400112: transform11
+    400114: transform12
+    400116: transform13
+    400118: transform14
+    400120: transform15
+    400122: transform16
+    400124: transform17
+    400126: transform2
+    400128: transform3
+    400130: transform4
+    400132: transform5
+    400134: transform6
+    400136: transform7
+    2300000: tail
+    3300000: tail
+    4300000: pCube3
+    4300002: pCube4
+    4300004: pCube5
+    4300006: pCube6
+    4300008: Body
+    4300010: tail
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Body
+    13700002: pCube3
+    13700004: pCube4
+    13700006: pCube5
+    13700008: pCube6
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert4
+    second: {fileID: 2100000, guid: a493c4a679f7fd14eb969c6cbdb1fe36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert6
+    second: {fileID: 2100000, guid: 67a32b70b93238c4f89be97bb478e38c, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

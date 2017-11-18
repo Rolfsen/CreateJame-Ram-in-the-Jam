@@ -1,64 +1,66 @@
 fileFormatVersion: 2
-guid: 349937b686a9b2a4ca1adbeca43d1b9a
-timeCreated: 1511037346
-licenseType: Pro
+guid: 3d91e2197ed1d4440ba082308b38b44d
+timeCreated: 1511048754
+licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: Body
     100002: Eye_balls
     100004: Eyes
-    100006: Head
-    100008: Head 1
-    100010: Horn_left
-    100012: Horn_right
-    100014: //RootNode
-    100016: Legs
-    100018: pCube3
-    100020: pCube4
-    100022: pCube5
-    100024: pCube6
-    100026: pSphere1
-    100028: pSphere2
-    100030: pSphere3
-    100032: pSphere4
-    100034: Ram_Head
-    100036: tail
-    100038: transform1
-    100040: transform2
-    100042: transform3
-    100044: transform4
-    100046: transform5
-    100048: transform6
-    100050: transform7
-    100052: Ram4
+    100006: FL___BR
+    100008: FR___BL
+    100010: Head
+    100012: Head 1
+    100014: Horn_left
+    100016: Horn_right
+    100018: Legs
+    100020: pCube3
+    100022: pCube4
+    100024: pCube5
+    100026: pCube6
+    100028: pSphere1
+    100030: pSphere2
+    100032: pSphere3
+    100034: pSphere4
+    100036: //RootNode
+    100038: Ram_Head
+    100040: tail
+    100042: transform1
+    100044: transform2
+    100046: transform3
+    100048: transform4
+    100050: transform5
+    100052: transform6
+    100054: transform7
     400000: Body
     400002: Eye_balls
     400004: Eyes
-    400006: Head
-    400008: Head 1
-    400010: Horn_left
-    400012: Horn_right
-    400014: //RootNode
-    400016: Legs
-    400018: pCube3
-    400020: pCube4
-    400022: pCube5
-    400024: pCube6
-    400026: pSphere1
-    400028: pSphere2
-    400030: pSphere3
-    400032: pSphere4
-    400034: Ram_Head
-    400036: tail
-    400038: transform1
-    400040: transform2
-    400042: transform3
-    400044: transform4
-    400046: transform5
-    400048: transform6
-    400050: transform7
-    400052: Ram4
+    400006: FL___BR
+    400008: FR___BL
+    400010: Head
+    400012: Head 1
+    400014: Horn_left
+    400016: Horn_right
+    400018: Legs
+    400020: pCube3
+    400022: pCube4
+    400024: pCube5
+    400026: pCube6
+    400028: pSphere1
+    400030: pSphere2
+    400032: pSphere3
+    400034: pSphere4
+    400036: //RootNode
+    400038: Ram_Head
+    400040: tail
+    400042: transform1
+    400044: transform2
+    400046: transform3
+    400048: transform4
+    400050: transform5
+    400052: transform6
+    400054: transform7
     2300000: Body
     2300002: pCube3
     2300004: pCube4
@@ -73,16 +75,15 @@ ModelImporter:
     3300008: pCube6
     3300010: Ram_Head
     3300012: tail
-    4300000: pCube3
+    4300000: pCube6
     4300002: pCube4
     4300004: pCube5
-    4300006: pCube6
+    4300006: pCube3
     4300008: Body
     4300010: Ram_Head
     4300012: tail
     7400000: Take 001
     9500000: //RootNode
-    11100000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -129,35 +130,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Take 001
-      takeName: Take 001
-      firstFrame: 4
-      lastFrame: 268
-      wrapMode: 2
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -203,7 +176,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
