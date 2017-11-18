@@ -49,6 +49,9 @@ public class PlayerControl : MonoBehaviour
 	private float additionPerPress = 1.7f;
 	[SerializeField]
 	private float reductionFactor = 1.0f;
+    [SerializeField]
+    private float comboFactor = 1.0f;
+    public bool reduceComboForJump = false;
     // To make life easier tools;
     [SerializeField] bool isUsingController;
     [Header("Game Controller")]
@@ -92,18 +95,23 @@ public class PlayerControl : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (comboJuice > 0.4f)
+        if (!reduceComboForJump)
+        {
+            if (comboJuice > 0.4f)
+            {
+                // to make it harder to keep at a high value but easy to keep above zero
+                comboJuice -= (((comboJuice / MAX_FORCE) * (additionPerPress) / 8) + 0.05f) * reductionFactor;
+            }
+            else
+            {
+                comboJuice = 0;
+            }
+        }
+        string CurrentKey = mainGameController.GetCurrentKey(player);
+
+        if (Input.GetKeyDown(AButton) )
 		{
-			// to make it harder to keep at a high value but easy to keep above zero
-			comboJuice -= (((comboJuice / MAX_FORCE) * (additionPerPress) / 8) + 0.05f) * reductionFactor;
-		}
-		else
-		{
-			comboJuice = 0;
-		}
-		if (Input.GetKeyDown(AButton) )
-		{
-            if (gameState.currentKey == "A")
+            if (CurrentKey == "A")
             {
                 CorrectKeyPress(AButton);
             } else
@@ -114,7 +122,7 @@ public class PlayerControl : MonoBehaviour
 		}
 		if (Input.GetKeyDown(BButton))
 		{
-            if (gameState.currentKey == "B")
+            if (CurrentKey == "B")
             {
                 CorrectKeyPress(AButton);
             }
@@ -126,7 +134,7 @@ public class PlayerControl : MonoBehaviour
         }
 		if (Input.GetKeyDown(XButton))
 		{
-            if (gameState.currentKey == "X")
+            if (CurrentKey == "X")
             {
                 CorrectKeyPress(AButton);
             }
@@ -138,7 +146,7 @@ public class PlayerControl : MonoBehaviour
         }
 		if (Input.GetKeyDown(YButton))
 		{
-            if (gameState.currentKey == "Y")
+            if (CurrentKey == "Y")
             {
                 CorrectKeyPress(AButton);
             }
@@ -148,29 +156,26 @@ public class PlayerControl : MonoBehaviour
                 Debug.Log("Wrong Key Pressed: Y");
             }
         }
-		if (Input.GetKeyDown(GetCurrentPowerUpKey()))
-		{
-			if (comboJuice + additionPerPress < MAX_FORCE)
-			{
-				comboJuice += additionPerPress;
-			}
-			else
-			{
-				comboJuice = additionPerPress;
-			}
-		}
 	}
 
     private void WrongKeyPress(KeyCode ButtonPressed)
     {
-        
+        // Bad things happen
     }
 
     void CorrectKeyPress(KeyCode buttonPressed)
 	{
 		jumpForce += increaseForce;
-		gameState.GetNewKey();
-	}
+		gameState.GetNewKey(player);
+        if (comboJuice + additionPerPress < MAX_FORCE)
+        {
+            comboJuice += additionPerPress;
+        }
+        else
+        {
+            comboJuice = MAX_FORCE;
+        }
+    }
 
 	private void FixedUpdate()
 	{
@@ -201,7 +206,8 @@ public class PlayerControl : MonoBehaviour
 	void StartJump(Collider other)
 	{
 		Destroy(other.gameObject);
-		rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+		rb.AddForce(new Vector3(0, jumpForce+(comboJuice*comboFactor), 0), ForceMode.Impulse);
+        Debug.Log("JUMP! used " + jumpForce + " of jump force and " + (comboJuice * comboFactor) + " of combo juice");
 	}
 	void EndJump(GameObject other)
 	{
