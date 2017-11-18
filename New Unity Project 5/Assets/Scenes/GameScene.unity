@@ -3447,6 +3447,7 @@ MonoBehaviour:
   splatter:
   - {fileID: 465691966}
   - {fileID: 319175911}
+  afterGameTime: 8
 --- !u!1 &1464335204
 GameObject:
   m_ObjectHideFlags: 0
