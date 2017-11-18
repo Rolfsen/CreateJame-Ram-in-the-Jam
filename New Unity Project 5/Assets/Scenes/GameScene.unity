@@ -1991,7 +1991,7 @@ MonoBehaviour:
   sliderPlayer1: {fileID: 0}
   sliderPlayer2: {fileID: 0}
   JamObject: {fileID: 1414363048}
-  PlayersShareQTEKeys: 1
+  PlayersShareQTEKeys: 0
   players:
   - player: {fileID: 1332020620}
     playerScore: 0
