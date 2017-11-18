@@ -56,6 +56,9 @@ public class GameState : MonoBehaviour
 
     private bool player1ReachedCameraTrigger = false;
     private bool player2ReachedCameraTrigger = false;
+    private bool player1Jumped = false;
+    private bool player2Jumped = false;
+
     public void PlayerReachedCameraTrigger(PlayerControl player)
     {
         if (player.player == PlayerControl.PlayerID.player1)
@@ -131,7 +134,23 @@ public class GameState : MonoBehaviour
 		}
 
 	}
-		
+	public void InformOfJump(PlayerControl.PlayerID player)
+    {
+        switch (player)
+        {
+            case PlayerControl.PlayerID.player1:
+                player1Jumped = true;
+                break;
+            case PlayerControl.PlayerID.player2:
+                player2Jumped = true;
+                break;
+
+        }
+        if (player1Jumped && player2Jumped)
+        {
+
+        }
+    }
     public string GetCurrentKey(PlayerControl.PlayerID player)
     {
         switch (player)

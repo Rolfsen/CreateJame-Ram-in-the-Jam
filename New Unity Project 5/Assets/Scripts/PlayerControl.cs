@@ -64,8 +64,10 @@ public class PlayerControl : MonoBehaviour
 	Rigidbody rb;
 	GameState gameState;
 	bool isJumpDone;
+    private bool isJumping=false;
+    public bool isLoser=false;
 
-	private void Start()
+    private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 		gameState = FindObjectOfType<GameState>();
@@ -156,6 +158,34 @@ public class PlayerControl : MonoBehaviour
                 Debug.Log("Wrong Key Pressed: Y");
             }
         }
+
+        if (isJumping && isLoser)
+        {
+            switch (player)
+            {
+                case PlayerID.player1:
+                    if (this.transform.position.x > 0)
+                    {
+                        // we are over the jam... SLAM
+                        this.moveSpeed = 0;
+                        Vector3 TempVel = this.GetComponent<Rigidbody>().velocity;
+                        TempVel.y *= 2;
+                        this.GetComponent<Rigidbody>().velocity = TempVel;
+
+                    }
+                    break;
+                case PlayerID.player2:
+                    if (this.transform.position.x < 0)
+                    {
+                        // we are over the jam... SLAM
+                        this.moveSpeed = 0;
+                        Vector3 TempVel = this.GetComponent<Rigidbody>().velocity;
+                        TempVel.y *= 2;
+                        this.GetComponent<Rigidbody>().velocity = TempVel;
+                    }
+                    break;
+            }
+        }
 	}
 
     private void WrongKeyPress(KeyCode ButtonPressed)
@@ -205,8 +235,10 @@ public class PlayerControl : MonoBehaviour
 	void StartJump(Collider other)
 	{
 		Destroy(other.gameObject);
-		rb.AddForce(new Vector3(0, jumpForce+(comboJuice*comboFactor), 0), ForceMode.Impulse);
+        mainGameController.InformOfJump(player);
+        rb.AddForce(new Vector3(0, jumpForce+(comboJuice*comboFactor), 0), ForceMode.Impulse);
         Debug.Log("JUMP! used " + jumpForce + " of jump force and " + (comboJuice * comboFactor) + " of combo juice");
+        isJumping = true;
 	}
 	void EndJump(GameObject other)
 	{
