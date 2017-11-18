@@ -27,6 +27,4 @@ public class DebugMenu : MonoBehaviour {
 		}
 		currentObject = eventSystem.currentSelectedGameObject;
 	}
-
-
 }
