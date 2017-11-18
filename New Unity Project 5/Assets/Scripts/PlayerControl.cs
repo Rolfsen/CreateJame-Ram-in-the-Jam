@@ -111,6 +111,9 @@ public class PlayerControl : MonoBehaviour
                 YButton = KeyCode.Joystick2Button3;
             }
         }
+		int i = UnityEngine.Random.Range(0,runningModels.Count);
+		var currentModel = runningModels[i];
+		currentModel.SetActive(true);
     }
 	KeyCode GetCurrentPowerUpKey()
 	{
