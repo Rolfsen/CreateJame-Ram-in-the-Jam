@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 185872167}
   - component: {fileID: 185872166}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: JamText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -834,8 +834,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 711265616}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.391, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children:
   - {fileID: 1078468744}
   m_Father: {fileID: 1332020618}
@@ -1029,7 +1029,7 @@ GameObject:
   - component: {fileID: 755174567}
   - component: {fileID: 755174566}
   m_Layer: 5
-  m_Name: Text
+  m_Name: RamText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1677,8 +1677,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1332020614}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30, y: 1.48, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 0.5}
+  m_LocalPosition: {x: -30, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 817165714}
   - {fileID: 711265617}
@@ -1997,6 +1997,7 @@ MonoBehaviour:
     playerScore: 0
   - player: {fileID: 1071304335}
     playerScore: 0
+  font: {fileID: 12800000, guid: ccd749516fad7b942ac2082cfae1ed02, type: 3}
   TextFields:
   - text: {fileID: 1653092762}
     TextName: Player1Speed
@@ -2675,7 +2676,7 @@ Animation:
   - {fileID: 7400000, guid: 340d775e9eea28d4eb531fcb25f83674, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
+  m_AnimatePhysics: 1
   m_CullingType: 1
 --- !u!1 &2013793272
 GameObject:
