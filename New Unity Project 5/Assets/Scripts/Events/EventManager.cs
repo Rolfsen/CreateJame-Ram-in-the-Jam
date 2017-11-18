@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 [System.Serializable]
-public class EventsArgs : UnityEvent
+public class EventsArgs : UnityEvent<AudioSource>
 {
 
 }
@@ -46,7 +46,7 @@ public class EventManager : MonoBehaviour
 		}
 	}
 
-	public static void StartListening(string eventName, UnityAction listener)
+	public static void StartListening(string eventName, UnityAction<AudioSource> listener)
 	{
 		EventsArgs thisEvent = null;
 		if (instance.eventDictionary.TryGetValue(eventName, out thisEvent))
@@ -61,7 +61,7 @@ public class EventManager : MonoBehaviour
 		}
 	}
 
-	public static void StopListening(string eventName, UnityAction listener)
+	public static void StopListening(string eventName, UnityAction<AudioSource> listener)
 	{
 		if (eventManagerObject == null) return;
 
@@ -77,12 +77,12 @@ public class EventManager : MonoBehaviour
 		instance.eventDictionary.Clear();
 	}
 
-	public static void TriggerEvent(string eventName)
+	public static void TriggerEvent(string eventName, AudioSource source)
 	{
 		EventsArgs thisEvent = null;
 		if (instance.eventDictionary.TryGetValue(eventName, out thisEvent))
 		{
-			thisEvent.Invoke();
+			thisEvent.Invoke(source);
 		}
 	}
 }
