@@ -226,9 +226,12 @@ public class GameState : MonoBehaviour
 		StartCoroutine(GoToMenu());
     }
 
+	[SerializeField]
+	float afterGameTime;
+
 	IEnumerator GoToMenu()
 	{
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(afterGameTime);
 		SceneManager.LoadScene(0);
 	}
 	public void GetNewKey(PlayerControl.PlayerID player)
