@@ -55,10 +55,34 @@ public class PlayerControl : MonoBehaviour
 	GameState gameState;
 	bool isJumpDone;
 
+	// To make life easier tools;
+	[SerializeField]bool isUsingController;
+	
+	public enum PlayerID {player1, player2}
+	public PlayerID player;
+
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 		gameState = FindObjectOfType<GameState>();
+
+		if (isUsingController)
+		{
+			if (player == PlayerID.player1)
+			{
+				powerUpButton0 = KeyCode.Joystick1Button0;
+				powerUpButton1 = KeyCode.Joystick1Button1;
+				powerUpButton2 = KeyCode.Joystick1Button2;
+				powerUpButton3 = KeyCode.Joystick1Button3;
+			}
+			else if (player == PlayerID.player2)
+			{
+				powerUpButton0 = KeyCode.Joystick2Button0;
+				powerUpButton1 = KeyCode.Joystick2Button1;
+				powerUpButton2 = KeyCode.Joystick2Button2;
+				powerUpButton3 = KeyCode.Joystick2Button3;
+			}
+		}
 	}
 	KeyCode GetCurrentPowerUpKey()
 	{
