@@ -1,7 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum GamePhase
+{
+    PAUSED = 0,
+    RUNNING_PHASE = 1,
+    START_JUMP_PHASE = 2,
+    JUMPING_PHASE = 3,
+    ENDING_PHASE = 4
 
+}
 public class GameState : MonoBehaviour
 {
 	[SerializeField]
