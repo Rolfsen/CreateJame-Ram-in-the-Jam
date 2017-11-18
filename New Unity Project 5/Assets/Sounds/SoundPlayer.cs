@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundPlayer : MonoBehaviour
 {
 	public AudioSource source;
-	public List<AudioClip> clip;
+	public List<AudioClip> clips;
 
 	private void Awake()
 	{
@@ -15,11 +15,12 @@ public class SoundPlayer : MonoBehaviour
 	public void VolumeChanged ()
 	{
 		source.volume = PlayerPrefs.GetFloat("SoundVolume",0.5f);
+		PlaySound(clips[5]);
 	}
 
-	private void PlaySound(AudioSource inputSound)
+	public void PlaySound (AudioClip audioClip)
 	{
-		Debug.Log(inputSound.name);
-		inputSound.Play();
+		source.clip = audioClip;
+		source.Play();
 	}
 }
