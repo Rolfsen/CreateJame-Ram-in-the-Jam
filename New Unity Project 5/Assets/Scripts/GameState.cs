@@ -149,7 +149,7 @@ public class GameState : MonoBehaviour
 	{
         if (PlayersShareQTEKeys)
         {
-            int getKey = UnityEngine.Random.Range(0, forceKeys.Count - 1);
+            int getKey = UnityEngine.Random.Range(0, forceKeys.Count);
             player1Key = forceKeys[getKey];
             player2Key = forceKeys[getKey];
             GetTextObject("Player1QTE").text = "\"" + forceKeys[getKey]+"\"";
@@ -158,7 +158,7 @@ public class GameState : MonoBehaviour
         {
             if (player == PlayerControl.PlayerID.player1)
             {
-                int getKey = UnityEngine.Random.Range(0, forceKeys.Count - 1);
+                int getKey = UnityEngine.Random.Range(0, forceKeys.Count);
                 player1Key = forceKeys[getKey];
                 GetTextObject("Player1QTE").text = "\"" + forceKeys[getKey]+"\"";
             }
