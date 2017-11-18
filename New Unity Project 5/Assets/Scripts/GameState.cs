@@ -64,6 +64,8 @@ public class GameState : MonoBehaviour
     [SerializeField]
     private GameObject winCam;
 
+    private bool hasAlreadyLost = false;
+
 	[Header("Sounds")]
 	[SerializeField]
 	AudioSource explotion;
@@ -191,6 +193,12 @@ public class GameState : MonoBehaviour
     }
     public void GameEndCinematic()
     {
+        if (hasAlreadyLost)
+        {
+            GetTextObject("Player1Wins").gameObject.SetActive(false);
+            GetTextObject("Player2Wins").gameObject.SetActive(false);
+            GetTextObject("JammedIt").gameObject.SetActive(true);
+        }
 		bgMusic.Stop();
 		explotion.Play();
 		int i = UnityEngine.Random.Range(0,splatter.Count);
@@ -207,6 +215,7 @@ public class GameState : MonoBehaviour
         }
         mainCam.GetComponent<Camera>().enabled = false;
         winCam.GetComponent<Camera>().enabled = true;
+        hasAlreadyLost = true;
     }
 	public void GetNewKey(PlayerControl.PlayerID player)
 	{
