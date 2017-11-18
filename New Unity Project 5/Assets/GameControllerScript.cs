@@ -21,7 +21,7 @@ public class GameControllerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        player1powerText.text = "Player 1 Power: " + player1.currentForce;
-        player2powerText.text = "Player 2 Power: " + player2.currentForce;
+        player1powerText.text = "Player 1 Power: " + player1.comboJuice;
+        player2powerText.text = "Player 2 Power: " + player2.comboJuice;
     }
 }

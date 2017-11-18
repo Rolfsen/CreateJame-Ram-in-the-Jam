@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,7 +35,7 @@ public class PlayerControl : MonoBehaviour
 
 	[Header("Player Variables")]
 	[SerializeField]
-	private float jumpForce;
+	public float jumpForce;
 	[SerializeField]
 	private float moveSpeed;
 	[SerializeField]
@@ -56,7 +57,7 @@ public class PlayerControl : MonoBehaviour
     public PlayerID player;
 
     private const float MAX_FORCE = 10.0f;
-	public float currentForce = 0.0f;
+	public float comboJuice = 0.0f;
 	Rigidbody rb;
 	GameState gameState;
 	bool isJumpDone;
@@ -91,54 +92,84 @@ public class PlayerControl : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (currentForce > 0.4f)
+		if (comboJuice > 0.4f)
 		{
 			// to make it harder to keep at a high value but easy to keep above zero
-			currentForce -= (((currentForce / MAX_FORCE) * (additionPerPress) / 8) + 0.05f) * reductionFactor;
+			comboJuice -= (((comboJuice / MAX_FORCE) * (additionPerPress) / 8) + 0.05f) * reductionFactor;
 		}
 		else
 		{
-			currentForce = 0;
+			comboJuice = 0;
 		}
-		if (Input.GetKeyDown(AButton) && gameState.currentKey == "A")
+		if (Input.GetKeyDown(AButton) )
 		{
-			CurrectKeyPress(AButton);
+            if (gameState.currentKey == "A")
+            {
+                CorrectKeyPress(AButton);
+            } else
+            {
+                WrongKeyPress(AButton);
+                Debug.Log("Wrong Key Pressed: A");
+            }
 		}
-		if (Input.GetKeyDown(BButton) && gameState.currentKey == "B")
+		if (Input.GetKeyDown(BButton))
 		{
-			CurrectKeyPress(BButton);
-		}
-		if (Input.GetKeyDown(XButton) && gameState.currentKey == "X")
+            if (gameState.currentKey == "B")
+            {
+                CorrectKeyPress(AButton);
+            }
+            else
+            {
+                WrongKeyPress(BButton);
+                Debug.Log("Wrong Key Pressed: B");
+            }
+        }
+		if (Input.GetKeyDown(XButton))
 		{
-			CurrectKeyPress(XButton);
-		}
-		if (Input.GetKeyDown(YButton) && gameState.currentKey == "Y")
+            if (gameState.currentKey == "X")
+            {
+                CorrectKeyPress(AButton);
+            }
+            else
+            {
+                WrongKeyPress(XButton);
+                Debug.Log("Wrong Key Pressed: X");
+            }
+        }
+		if (Input.GetKeyDown(YButton))
 		{
-			CurrectKeyPress(YButton);
-		}
+            if (gameState.currentKey == "Y")
+            {
+                CorrectKeyPress(AButton);
+            }
+            else
+            {
+                WrongKeyPress(YButton);
+                Debug.Log("Wrong Key Pressed: Y");
+            }
+        }
 		if (Input.GetKeyDown(GetCurrentPowerUpKey()))
 		{
-			Debug.Log("Power up key pressed. Current force: " + currentForce);
-			if (currentForce + additionPerPress < MAX_FORCE)
+			if (comboJuice + additionPerPress < MAX_FORCE)
 			{
-				currentForce += additionPerPress;
+				comboJuice += additionPerPress;
 			}
 			else
 			{
-				currentForce = additionPerPress;
+				comboJuice = additionPerPress;
 			}
 		}
 	}
 
-	void CurrectKeyPress(KeyCode buttonPressed)
+    private void WrongKeyPress(KeyCode ButtonPressed)
+    {
+        
+    }
+
+    void CorrectKeyPress(KeyCode buttonPressed)
 	{
 		jumpForce += increaseForce;
 		gameState.GetNewKey();
-		Debug.Log("PowerUp Button" + buttonPressed + " pressed by: " + gameObject.name);
-	}
-	void WrongKeyPress()
-	{
-
 	}
 
 	private void FixedUpdate()

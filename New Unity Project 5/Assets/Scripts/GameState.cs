@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 public enum GamePhase
 {
     PAUSED = 0,
@@ -16,16 +19,28 @@ public class GameState : MonoBehaviour
 
 	public List<string> forceKeys = new List<string>(4);
 	public string currentKey;
+    [SerializeField]
+    private GameObject runningPhaseUI;
+    [SerializeField]
+    private GameObject jumpingPhaseUI;
 
-	[System.Serializable]
+    [System.Serializable]
 	struct PlayerData
 	{
 		public PlayerControl player;
 		public float playerScore;
 	}
-
 	[SerializeField]
-	PlayerData[] players;
+    PlayerData[] players;
+
+    [System.Serializable]
+    struct TextData
+    {
+        public Text text;
+        public string TextName;
+    }
+    [SerializeField]
+    List<TextData> TextFields;
 
     private bool player1ReachedCameraTrigger = false;
     private bool player2ReachedCameraTrigger = false;
@@ -45,31 +60,55 @@ public class GameState : MonoBehaviour
         }
         if (player1ReachedCameraTrigger&& player2ReachedCameraTrigger)
         {
-            players[0].player.GetComponentInChildren<Camera>().enabled = false;
-            players[1].player.GetComponentInChildren<Camera>().enabled = false;
+            StartJumpCameraTransition();
+            
         }
     }
-	private void Start()
+
+    private void StartJumpCameraTransition()
+    {
+        runningPhaseUI.SetActive(false);
+        jumpingPhaseUI.SetActive(false);
+        players[0].player.GetComponentInChildren<Camera>().enabled = false;
+        players[1].player.GetComponentInChildren<Camera>().enabled = false;
+    }
+
+    private void Start()
 	{
 		Physics.gravity = gravity;
 		GetNewKey();
 	}
-
+    public Text GetTextObject(string name)
+    {
+        Text Result;
+        Result = TextFields.Find(x=>x.TextName == name).text;
+        return Result;
+    }
 	private void Update()
 	{
-		for (int i = 0; i < players.Length; i++)
+        GetTextObject("Player1Speed").text = "Player 1 Speed: " + players[0].player.jumpForce;
+        GetTextObject("Player2Speed").text = "Player 2 Speed: " + players[1].player.jumpForce;
+
+        GetTextObject("Player1ComboJuice").text = "Player 1 Combo: " + players[0].player.comboJuice;
+        GetTextObject("Player2ComboJuice").text = "Player 2 Combo: " + players[1].player.comboJuice;
+
+
+        for (int i = 0; i < players.Length; i++)
 		{
 			if (players[i].player.transform.position.y > players[i].playerScore)
 			{
 				players[i].playerScore = players[i].player.transform.position.y;
 			}
 		}
+
 	}
 		
 
 	public void GetNewKey()
 	{
-		int getKey = Random.Range(0, forceKeys.Count - 1);
+		int getKey = UnityEngine.Random.Range(0, forceKeys.Count - 1);
 		currentKey = forceKeys[getKey];
-	}
+        GetTextObject("Player1QTE").text = "Player 1 Button: " + forceKeys[getKey];
+        GetTextObject("Player2QTE").text = "Player 2 Button: " + forceKeys[getKey];
+    }
 }
