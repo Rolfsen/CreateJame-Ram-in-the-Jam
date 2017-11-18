@@ -18,12 +18,14 @@ public class GameState : MonoBehaviour
 	Vector3 gravity;
 
 	public List<string> forceKeys = new List<string>(4);
-	public string currentKey;
+    public string player1Key;
+    public string player2Key;
     [SerializeField]
     private GameObject runningPhaseUI;
     [SerializeField]
     private GameObject jumpingPhaseUI;
-
+    [SerializeField]
+    public bool PlayersShareQTEKeys = false;
     [System.Serializable]
 	struct PlayerData
 	{
@@ -67,6 +69,8 @@ public class GameState : MonoBehaviour
 
     private void StartJumpCameraTransition()
     {
+        players[0].player.reduceComboForJump = true;
+        players[1].player.reduceComboForJump = true;
         runningPhaseUI.SetActive(false);
         jumpingPhaseUI.SetActive(false);
         players[0].player.GetComponentInChildren<Camera>().enabled = false;
@@ -76,8 +80,9 @@ public class GameState : MonoBehaviour
     private void Start()
 	{
 		Physics.gravity = gravity;
-		GetNewKey();
-	}
+		GetNewKey(PlayerControl.PlayerID.player1);
+        GetNewKey(PlayerControl.PlayerID.player2);
+    }
     public Text GetTextObject(string name)
     {
         Text Result;
@@ -86,12 +91,11 @@ public class GameState : MonoBehaviour
     }
 	private void Update()
 	{
-        GetTextObject("Player1Speed").text = "Player 1 Speed: " + players[0].player.jumpForce;
-        GetTextObject("Player2Speed").text = "Player 2 Speed: " + players[1].player.jumpForce;
+        GetTextObject("Player1Speed").text = "Player 1 Jump Force: " + players[0].player.jumpForce;
+        GetTextObject("Player2Speed").text = "Player 2 Jump Force: " + players[1].player.jumpForce;
 
         GetTextObject("Player1ComboJuice").text = "Player 1 Combo: " + players[0].player.comboJuice;
         GetTextObject("Player2ComboJuice").text = "Player 2 Combo: " + players[1].player.comboJuice;
-
 
         for (int i = 0; i < players.Length; i++)
 		{
@@ -103,12 +107,42 @@ public class GameState : MonoBehaviour
 
 	}
 		
-
-	public void GetNewKey()
+    public string GetCurrentKey(PlayerControl.PlayerID player)
+    {
+        switch (player)
+        {
+            case PlayerControl.PlayerID.player1:
+                return player1Key;
+            case PlayerControl.PlayerID.player2:
+                return player2Key;
+            default:
+                //should never happen
+                return "A";
+        }
+    }
+	public void GetNewKey(PlayerControl.PlayerID player)
 	{
-		int getKey = UnityEngine.Random.Range(0, forceKeys.Count - 1);
-		currentKey = forceKeys[getKey];
-        GetTextObject("Player1QTE").text = "Player 1 Button: " + forceKeys[getKey];
-        GetTextObject("Player2QTE").text = "Player 2 Button: " + forceKeys[getKey];
+        if (PlayersShareQTEKeys)
+        {
+            int getKey = UnityEngine.Random.Range(0, forceKeys.Count - 1);
+            player1Key = forceKeys[getKey];
+            player2Key = forceKeys[getKey];
+            GetTextObject("Player1QTE").text = "Player 1 Button: " + forceKeys[getKey];
+            GetTextObject("Player2QTE").text = "Player 2 Button: " + forceKeys[getKey];
+        } else
+        {
+            if (player == PlayerControl.PlayerID.player1)
+            {
+                int getKey = UnityEngine.Random.Range(0, forceKeys.Count - 1);
+                player1Key = forceKeys[getKey];
+                GetTextObject("Player1QTE").text = "Player 1 Button: " + forceKeys[getKey];
+            }
+            else if (player == PlayerControl.PlayerID.player2)
+            {
+                int getKey = UnityEngine.Random.Range(0, forceKeys.Count - 1);
+                player2Key = forceKeys[getKey];
+                GetTextObject("Player2QTE").text = "Player 2 Button: " + forceKeys[getKey];
+            }
+        }
     }
 }
