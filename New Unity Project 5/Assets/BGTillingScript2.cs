@@ -8,7 +8,7 @@ public class BGTillingScript2 : MonoBehaviour {
     void Start () {
         // Get the current sprite with an unscaled size
         sprite = GetComponent<SpriteRenderer>();
-        Vector2 spriteSize = new Vector2(sprite.bounds.size.x / (transform.localScale.x*10), sprite.bounds.size.y / (transform.localScale.y));
+        Vector2 spriteSize = new Vector2(sprite.bounds.size.x / transform.localScale.x, sprite.bounds.size.y / (transform.localScale.y));
 
         // Generate a child prefab of the sprite renderer
         GameObject childPrefab = new GameObject();
@@ -18,7 +18,7 @@ public class BGTillingScript2 : MonoBehaviour {
 
         // Loop through and spit out repeated tiles
         GameObject child;
-        for (int i = 1, l = (int)Mathf.Round(sprite.bounds.size.x); i < l; i++)
+        for (int i = 1, l = (int)Mathf.Round(sprite.bounds.size.x/10); i < l; i++)
         {
             child = Instantiate(childPrefab) as GameObject;
             child.transform.position = transform.position - (new Vector3(spriteSize.x, 0, 0) * i);

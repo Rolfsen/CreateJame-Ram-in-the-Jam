@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: ccd749516fad7b942ac2082cfae1ed02
+timeCreated: 1511023108
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: The Black Font
+  fontNames:
+  - The Black Font
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
