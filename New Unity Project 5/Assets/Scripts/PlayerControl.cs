@@ -6,13 +6,13 @@ public class PlayerControl : MonoBehaviour
 {
 	[Header("Increase Ram Force")]
 	[SerializeField]
-	private KeyCode powerUpButton0;
+	private KeyCode AButton;
 	[SerializeField]
-	private KeyCode powerUpButton1;
+	private KeyCode BButton;
 	[SerializeField]
-	private KeyCode powerUpButton2;
+	private KeyCode XButton;
 	[SerializeField]
-	private KeyCode powerUpButton3;
+	private KeyCode YButton;
 	[Header("Attack Other Ram")]
 	[SerializeField]
 	private KeyCode attackButton0;
@@ -63,7 +63,7 @@ public class PlayerControl : MonoBehaviour
 	KeyCode GetCurrentPowerUpKey()
 	{
 		// This should eventually choose random keys to press every couple secs to allow for differnt buttons to mash
-		return powerUpButton0;
+		return AButton;
 	}
 	// Update is called once per frame
 	void Update()
@@ -77,21 +77,21 @@ public class PlayerControl : MonoBehaviour
 		{
 			currentForce = 0;
 		}
-		if (Input.GetKeyDown(powerUpButton0) && gameState.currentKey == "A")
+		if (Input.GetKeyDown(AButton) && gameState.currentKey == "A")
 		{
-			CurrectKeyPress(powerUpButton0);
+			CurrectKeyPress(AButton);
 		}
-		if (Input.GetKeyDown(powerUpButton1) && gameState.currentKey == "B")
+		if (Input.GetKeyDown(BButton) && gameState.currentKey == "B")
 		{
-			CurrectKeyPress(powerUpButton1);
+			CurrectKeyPress(BButton);
 		}
-		if (Input.GetKeyDown(powerUpButton2) && gameState.currentKey == "X")
+		if (Input.GetKeyDown(XButton) && gameState.currentKey == "X")
 		{
-			CurrectKeyPress(powerUpButton2);
+			CurrectKeyPress(XButton);
 		}
-		if (Input.GetKeyDown(powerUpButton3) && gameState.currentKey == "Y")
+		if (Input.GetKeyDown(YButton) && gameState.currentKey == "Y")
 		{
-			CurrectKeyPress(powerUpButton3);
+			CurrectKeyPress(YButton);
 		}
 		if (Input.GetKeyDown(GetCurrentPowerUpKey()))
 		{

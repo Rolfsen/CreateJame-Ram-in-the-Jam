@@ -544,10 +544,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b868b4f0ca9422d499952ba19f77f6fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpButton0: 54
-  powerUpButton1: 57
-  powerUpButton2: 56
-  powerUpButton3: 55
+  AButton: 54
+  BButton: 55
+  XButton: 56
+  YButton: 57
   attackButton0: 0
   attackButton1: 0
   attackButton2: 0
@@ -677,10 +677,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b868b4f0ca9422d499952ba19f77f6fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpButton0: 49
-  powerUpButton1: 50
-  powerUpButton2: 51
-  powerUpButton3: 52
+  AButton: 49
+  BButton: 50
+  XButton: 51
+  YButton: 52
   attackButton0: 0
   attackButton1: 0
   attackButton2: 0
