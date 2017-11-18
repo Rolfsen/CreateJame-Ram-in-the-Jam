@@ -13,6 +13,8 @@ public class SliderUI : MonoBehaviour
 	private void Start()
 	{
 		slider = GetComponent<Slider>();
+		slider.minValue = -80f;
+		slider.maxValue = 20.0f;
 	}
 /*
 	private void OnEnable()
@@ -32,5 +34,7 @@ public class SliderUI : MonoBehaviour
 	public void UpdateSoundVolume()
 	{
 		PlayerPrefs.SetFloat("SoundVolume", slider.value);
+		audio.SetFloat("Vol", slider.value);
+
 	}
 }

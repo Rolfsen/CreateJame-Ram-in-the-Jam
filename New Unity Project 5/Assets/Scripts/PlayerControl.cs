@@ -68,11 +68,34 @@ public class PlayerControl : MonoBehaviour
     private bool isJumping=false;
     public bool isLoser=false;
 
-    private void Start()
+	[Header("Sounds")]
+	[SerializeField]
+	List<AudioSource> glassCollision;
+	[SerializeField]
+	List<AudioSource> jump;
+	[SerializeField]
+	AudioSource Hooves;
+	[SerializeField]
+	AudioSource error;
+	[SerializeField]
+	AudioSource correctPress;
+
+	[Header("Animations")]
+	[SerializeField]
+	List<GameObject> runningModels;
+	[SerializeField]
+	GameObject jumpingModels;
+	[SerializeField]
+	GameObject flyingAnimation;
+
+
+
+	private void Start()
 	{
+		Debug.Log(Input.GetJoystickNames().Length);
 		rb = GetComponent<Rigidbody>();
 		gameState = FindObjectOfType<GameState>();
-        if (isUsingController)
+        if (Input.GetJoystickNames().Length >= 1)
         {
             if (player == PlayerID.player1)
             {
@@ -89,6 +112,9 @@ public class PlayerControl : MonoBehaviour
                 YButton = KeyCode.Joystick2Button3;
             }
         }
+		int i = UnityEngine.Random.Range(0,runningModels.Count);
+		var currentModel = runningModels[i];
+		currentModel.SetActive(true);
     }
 	KeyCode GetCurrentPowerUpKey()
 	{
@@ -175,6 +201,8 @@ public class PlayerControl : MonoBehaviour
                         this.GetComponent<Rigidbody>().velocity = TempVel;
                         this.isJumping = false;
                         mainGameController.GameEndCinematic();
+                        mainGameController.blockJam = true;
+                        
                     }
                     break;
                 case PlayerID.player2:
@@ -188,6 +216,7 @@ public class PlayerControl : MonoBehaviour
                         this.GetComponent<Rigidbody>().velocity = TempVel;
                         this.isJumping = false;
                         mainGameController.GameEndCinematic();
+                        mainGameController.blockJam = true;
                     }
                     break;
             }
@@ -196,11 +225,16 @@ public class PlayerControl : MonoBehaviour
 
     private void WrongKeyPress(KeyCode ButtonPressed)
     {
-        // Bad things happen
+		error.Play();
+        comboJuice = 0;
+        jumpForce -= increaseForce;
+
+		// Bad things happen
     }
 
     void CorrectKeyPress(KeyCode buttonPressed)
 	{
+		correctPress.Play();
 		jumpForce += increaseForce;
 		gameState.GetNewKey(player);
         if (comboJuice + additionPerPress < MAX_FORCE)
@@ -254,6 +288,10 @@ public class PlayerControl : MonoBehaviour
                 }
                 mainGameController.GameEndCinematic();
                 break;
+			case ("jam"):
+				int i = UnityEngine.Random.Range(0, jump.Count - 1);
+				glassCollision[i].Play();
+				break;
 			default:
 				Debug.LogWarning("Unknown tag: " + other.tag);
 				break;
@@ -262,6 +300,9 @@ public class PlayerControl : MonoBehaviour
 
 	void StartJump(Collider other)
 	{
+		Hooves.Stop();
+		int i = UnityEngine.Random.Range(0,jump.Count-1);
+		jump[i].Play();
 		Destroy(other.gameObject);
         jumpPowerUsed = jumpForce + (comboJuice * comboFactor);
         rb.AddForce(new Vector3(0, jumpPowerUsed, 0), ForceMode.Impulse);

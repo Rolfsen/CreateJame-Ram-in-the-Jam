@@ -1,68 +1,119 @@
 fileFormatVersion: 2
-guid: f5011c4d2184cfa4db51651ac0c1308c
-timeCreated: 1511035432
-licenseType: Free
+guid: efb3ec6351ba4a34f83c9b957f16b51c
+timeCreated: 1511037347
+licenseType: Pro
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: Body
-    100002: Legs
-    100004: pCube3
-    100006: pCube4
-    100008: pCube5
-    100010: pCube6
-    100012: Ram_Head
-    100014: //RootNode
-    100016: tail
+    100002: //RootNode
+    100004: Eye_balls
+    100006: Eyes
+    100008: Head
+    100010: Head 1
+    100012: Horn_left
+    100014: Horn_right
+    100016: Legs
+    100018: pCube3
+    100020: pCube4
+    100022: pCube5
+    100024: pCube6
+    100026: polySurface1
+    100028: polySurface1 1
+    100030: polySurface2
+    100032: polySurface3
+    100034: polySurface4
+    100036: polySurface5
+    100038: polySurface6
+    100040: polySurface7
+    100042: pSphere1
+    100044: pSphere2
+    100046: pSphere3
+    100048: pSphere4
+    100050: Ram_Head
+    100052: tail
+    100054: transform1
+    100056: transform10
+    100058: transform11
+    100060: transform12
+    100062: transform13
+    100064: transform14
+    100066: transform15
+    100068: transform16
+    100070: transform17
+    100072: transform2
+    100074: transform3
+    100076: transform4
+    100078: transform5
+    100080: transform6
+    100082: transform7
     400000: Body
-    400002: Legs
-    400004: pCube3
-    400006: pCube4
-    400008: pCube5
-    400010: pCube6
-    400012: Ram_Head
-    400014: //RootNode
-    400016: tail
+    400002: //RootNode
+    400004: Eye_balls
+    400006: Eyes
+    400008: Head
+    400010: Head 1
+    400012: Horn_left
+    400014: Horn_right
+    400016: Legs
+    400018: pCube3
+    400020: pCube4
+    400022: pCube5
+    400024: pCube6
+    400026: polySurface1
+    400028: polySurface1 1
+    400030: polySurface2
+    400032: polySurface3
+    400034: polySurface4
+    400036: polySurface5
+    400038: polySurface6
+    400040: polySurface7
+    400042: pSphere1
+    400044: pSphere2
+    400046: pSphere3
+    400048: pSphere4
+    400050: Ram_Head
+    400052: tail
+    400054: transform1
+    400056: transform10
+    400058: transform11
+    400060: transform12
+    400062: transform13
+    400064: transform14
+    400066: transform15
+    400068: transform16
+    400070: transform17
+    400072: transform2
+    400074: transform3
+    400076: transform4
+    400078: transform5
+    400080: transform6
+    400082: transform7
     2300000: Body
     2300002: pCube3
     2300004: pCube4
     2300006: pCube5
     2300008: pCube6
-    2300010: Ram_Head
-    2300012: tail
+    2300010: tail
     3300000: Body
     3300002: pCube3
     3300004: pCube4
     3300006: pCube5
     3300008: pCube6
-    3300010: Ram_Head
-    3300012: tail
+    3300010: tail
     4300000: pCube3
     4300002: pCube4
     4300004: pCube5
     4300006: pCube6
     4300008: Body
-    4300010: Ram_Head
-    4300012: tail
-    7400000: Take 001
+    4300010: tail
     9500000: //RootNode
-    11100000: //RootNode
   externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert3
-    second: {fileID: 2100000, guid: 431a8522bac973f43b9b6e2c28fb359b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert4
     second: {fileID: 2100000, guid: a493c4a679f7fd14eb969c6cbdb1fe36, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert5
-    second: {fileID: 2100000, guid: b53380816f4e3b8479cffc6ec9f2d82d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -93,35 +144,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Take 001
-      takeName: Take 001
-      firstFrame: 2
-      lastFrame: 161
-      wrapMode: 2
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -167,7 +190,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

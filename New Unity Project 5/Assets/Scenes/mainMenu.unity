@@ -747,6 +747,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 82785024347267470, guid: ad1b20d7912b08b4d872edc1606f6e11,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.277
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ad1b20d7912b08b4d872edc1606f6e11, type: 2}
   m_IsPrefabParent: 0
@@ -1358,7 +1363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0628df50c94e7458d26a4e73af135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio: {fileID: 0}
+  audio: {fileID: 24100000, guid: 9be785dae12737441857d94a04b64ca2, type: 2}
 --- !u!1 &1092662066
 GameObject:
   m_ObjectHideFlags: 0

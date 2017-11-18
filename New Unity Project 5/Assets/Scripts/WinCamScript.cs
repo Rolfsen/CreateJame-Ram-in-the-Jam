@@ -13,7 +13,20 @@ public class WinCamScript : MonoBehaviour {
     void Start () {
         positionOffset = transform.position;
     }
-	
+	public void SetWinner(int playerId)
+    {
+        switch (playerId)
+        {
+            case 1:
+                Transform temp = followTarget;
+                followTarget = lookTarget;
+                lookTarget = temp;
+                positionOffset.x = -positionOffset.x;
+                break;
+            case 2:
+                break;
+        }
+    }
 	// Update is called once per frame
 	void Update () {
         transform.LookAt(lookTarget);

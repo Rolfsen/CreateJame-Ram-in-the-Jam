@@ -1,28 +1,62 @@
 fileFormatVersion: 2
-guid: f5011c4d2184cfa4db51651ac0c1308c
-timeCreated: 1511035432
-licenseType: Free
+guid: 349937b686a9b2a4ca1adbeca43d1b9a
+timeCreated: 1511037346
+licenseType: Pro
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: Body
-    100002: Legs
-    100004: pCube3
-    100006: pCube4
-    100008: pCube5
-    100010: pCube6
-    100012: Ram_Head
+    100002: Eye_balls
+    100004: Eyes
+    100006: Head
+    100008: Head 1
+    100010: Horn_left
+    100012: Horn_right
     100014: //RootNode
-    100016: tail
+    100016: Legs
+    100018: pCube3
+    100020: pCube4
+    100022: pCube5
+    100024: pCube6
+    100026: pSphere1
+    100028: pSphere2
+    100030: pSphere3
+    100032: pSphere4
+    100034: Ram_Head
+    100036: tail
+    100038: transform1
+    100040: transform2
+    100042: transform3
+    100044: transform4
+    100046: transform5
+    100048: transform6
+    100050: transform7
     400000: Body
-    400002: Legs
-    400004: pCube3
-    400006: pCube4
-    400008: pCube5
-    400010: pCube6
-    400012: Ram_Head
+    400002: Eye_balls
+    400004: Eyes
+    400006: Head
+    400008: Head 1
+    400010: Horn_left
+    400012: Horn_right
     400014: //RootNode
-    400016: tail
+    400016: Legs
+    400018: pCube3
+    400020: pCube4
+    400022: pCube5
+    400024: pCube6
+    400026: pSphere1
+    400028: pSphere2
+    400030: pSphere3
+    400032: pSphere4
+    400034: Ram_Head
+    400036: tail
+    400038: transform1
+    400040: transform2
+    400042: transform3
+    400044: transform4
+    400046: transform5
+    400048: transform6
+    400050: transform7
     2300000: Body
     2300002: pCube3
     2300004: pCube4
@@ -97,8 +131,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Take 001
       takeName: Take 001
-      firstFrame: 2
-      lastFrame: 161
+      firstFrame: 4
+      lastFrame: 268
       wrapMode: 2
       orientationOffsetY: 0
       level: 0

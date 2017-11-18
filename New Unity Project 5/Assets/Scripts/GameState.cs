@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum GamePhase
 {
@@ -63,6 +64,18 @@ public class GameState : MonoBehaviour
     private GameObject mainCam;
     [SerializeField]
     private GameObject winCam;
+
+    private bool hasAlreadyLost = false;
+    public bool blockJam = false;
+
+	[Header("Sounds")]
+	[SerializeField]
+	AudioSource explotion;
+	[SerializeField]
+	AudioSource bgMusic;
+	[SerializeField]
+	List<AudioSource> splatter;
+
     public void PlayerReachedCameraTrigger(PlayerControl player)
     {
         if (player.player == PlayerControl.PlayerID.player1)
@@ -182,17 +195,45 @@ public class GameState : MonoBehaviour
     }
     public void GameEndCinematic()
     {
+        if (blockJam)
+        {
+            return;
+        }
+		bgMusic.Stop();
+		explotion.Play();
+		int i = UnityEngine.Random.Range(0,splatter.Count);
+		splatter[i].Play();
         jumpingPhaseUI.SetActive(true);
         if (winningPlayer == 1)
         {
             GetTextObject("Player1Wins").gameObject.SetActive(true);
+            winCam.GetComponent<WinCamScript>().SetWinner(1);
         } else
         {
             GetTextObject("Player2Wins").gameObject.SetActive(true);
+            winCam.GetComponent<WinCamScript>().SetWinner(2);
         }
         mainCam.GetComponent<Camera>().enabled = false;
         winCam.GetComponent<Camera>().enabled = true;
+        if (hasAlreadyLost)
+        {
+            GetTextObject("Player1Wins").gameObject.SetActive(false);
+            GetTextObject("Player2Wins").gameObject.SetActive(false);
+            GetTextObject("JammedIt").gameObject.SetActive(true);
+        }
+        hasAlreadyLost = true;
+
+		StartCoroutine(GoToMenu());
     }
+
+	[SerializeField]
+	float afterGameTime;
+
+	IEnumerator GoToMenu()
+	{
+		yield return new WaitForSeconds(afterGameTime);
+		SceneManager.LoadScene(0);
+	}
 	public void GetNewKey(PlayerControl.PlayerID player)
 	{
         if (PlayersShareQTEKeys)
@@ -212,7 +253,7 @@ public class GameState : MonoBehaviour
             }
             else if (player == PlayerControl.PlayerID.player2)
             {
-                int getKey = UnityEngine.Random.Range(0, forceKeys.Count - 1);
+                int getKey = UnityEngine.Random.Range(0, forceKeys.Count);
                 player2Key = forceKeys[getKey];
                 GetTextObject("Player2QTE").text = "\"" + forceKeys[getKey]+"\"";
             }
