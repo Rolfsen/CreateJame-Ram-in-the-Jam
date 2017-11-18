@@ -8,8 +8,8 @@ public class CameraMovementScript : MonoBehaviour {
     private PlayerControl player1;
     [SerializeField]
     private PlayerControl player2;
-
-    private const float DISTANCE_MARGIN = 1.0f;
+    [SerializeField]
+    private const float DISTANCE_MARGIN = 5.0f;
 
     private Vector3 middlePoint;
     private float distanceFromMiddlePoint;

@@ -50,7 +50,8 @@ public class PlayerControl : MonoBehaviour
 	private float reductionFactor = 1.0f;
     // To make life easier tools;
     [SerializeField] bool isUsingController;
-
+    [Header("Game Controller")]
+    [SerializeField] GameState mainGameController;
     public enum PlayerID { player1, player2 }
     public PlayerID player;
 
@@ -155,6 +156,10 @@ public class PlayerControl : MonoBehaviour
 			case ("endJump"):
 				EndJump(other.transform.gameObject);
 				break;
+            case ("switchCameraToJump"):
+                mainGameController.PlayerReachedCameraTrigger(this);
+                Debug.Log("Hit Camera Trigger");
+                break;
 			default:
 				Debug.LogWarning("Unknown tag: " + other.tag);
 				break;
