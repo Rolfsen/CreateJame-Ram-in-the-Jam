@@ -199,7 +199,6 @@ public class PlayerControl : MonoBehaviour
 			default:
 				Debug.LogWarning("Unknown tag: " + other.tag);
 				break;
-
 		}
 	}
 
