@@ -3,19 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SliderUI : MonoBehaviour {
+public class SliderUI : MonoBehaviour
+{
 
 	private Slider slider;
 
 	private void Start()
 	{
-		slider = GetComponent<Slider>();		
+		slider = GetComponent<Slider>();
 	}
 
-
-	public void UpdateSoundVolume ()
+	private void OnEnable()
 	{
-		PlayerPrefs.SetFloat("SoundVolume",slider.value);
+		slider = GetComponent<Slider>();
+		if (slider != null)
+		{
+			slider.normalizedValue = PlayerPrefs.HasKey("SoundVolume") ? PlayerPrefs.GetFloat("SoundVolume") : 0.5f;
+		}
+		else
+		{
+			Debug.LogError("Slider is: " + slider);
+		}
 	}
 
+
+	public void UpdateSoundVolume()
+	{
+		PlayerPrefs.SetFloat("SoundVolume", slider.value);
+	}
 }
