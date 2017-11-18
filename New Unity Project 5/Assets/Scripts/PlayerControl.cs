@@ -21,16 +21,16 @@ public class PlayerControl : MonoBehaviour
 	[SerializeField]
 	private KeyCode attackButton2;
 	[SerializeField]
-	private KeyCode attackpButton3;
+	private KeyCode attackButton3;
 	[Header("Dodge attacks")]
 	[SerializeField]
-	private KeyCode dogdeButton0;
+	private KeyCode dodgeButton0;
 	[SerializeField]
-	private KeyCode dogdeButton1;
+	private KeyCode dodgeButton1;
 	[SerializeField]
-	private KeyCode dogdeButton2;
+	private KeyCode dodgeButton2;
 	[SerializeField]
-	private KeyCode dogdepButton3;
+	private KeyCode dodgeButton3;
 
 	[Header("Player Variables")]
 	[SerializeField]
@@ -43,8 +43,14 @@ public class PlayerControl : MonoBehaviour
 	private float increaseForce;
 	[SerializeField]
 	Vector3 moveDir;
+    [Header("Button mashing difficulty")]
+    [SerializeField]
+    private float additionPerPress = 1.7f;
+    [SerializeField] private float reductionFactor = 1.0f;
 
-	Rigidbody rb;
+    private const float MAX_FORCE = 10.0f;
+    public float currentForce = 0.0f;
+    Rigidbody rb;
 	GameState gameState;
 
 	private void Start()
@@ -52,11 +58,23 @@ public class PlayerControl : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 		gameState = FindObjectOfType<GameState>();
 	}
-
-	// Update is called once per frame
-	void Update()
+    KeyCode GetCurrentPowerUpKey()
+    {
+        // This should eventually choose random keys to press every couple secs to allow for differnt buttons to mash
+        return powerUpButton0;
+    }
+    // Update is called once per frame
+    void Update()
 	{
-
+        if (currentForce > 0.4f)
+        {
+            // to make it harder to keep at a high value but easy to keep above zero
+            currentForce -= (((currentForce / MAX_FORCE) * (additionPerPress) / 8) + 0.05f) * reductionFactor;
+        }
+        else
+        {
+            currentForce = 0;
+        }
 		if (Input.GetKeyDown(powerUpButton0) && gameState.currentKey == "A")
 		{
 			CurrectKeyPress(powerUpButton0);
@@ -73,7 +91,19 @@ public class PlayerControl : MonoBehaviour
 		{
 			CurrectKeyPress(powerUpButton3);
 		}
-	}
+        if (Input.GetKeyDown(GetCurrentPowerUpKey()))
+        {
+            Debug.Log("Power up key pressed. Current force: " + currentForce);
+            if (currentForce + additionPerPress < MAX_FORCE)
+            {
+                currentForce += additionPerPress;
+            }
+            else
+            {
+                currentForce = additionPerPress;
+            }
+        }
+    }
 
 	void CurrectKeyPress (KeyCode buttonPressed)
 	{
