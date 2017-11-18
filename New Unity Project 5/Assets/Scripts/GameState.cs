@@ -25,7 +25,16 @@ public class GameState : MonoBehaviour
     [SerializeField]
     private GameObject jumpingPhaseUI;
     [SerializeField]
+    private Slider sliderPlayer1;
+    [SerializeField]
+    private Slider sliderPlayer2;
+    [SerializeField]
+    private GameObject JamObject;
+    [SerializeField]
     public bool PlayersShareQTEKeys = false;
+
+    private float p1Distance;
+    private float p2Distance;
     [System.Serializable]
 	struct PlayerData
 	{
@@ -82,6 +91,12 @@ public class GameState : MonoBehaviour
 		Physics.gravity = gravity;
 		GetNewKey(PlayerControl.PlayerID.player1);
         GetNewKey(PlayerControl.PlayerID.player2);
+
+        p1Distance = Vector3.Distance(players[0].player.transform.position, JamObject.transform.position);
+        p2Distance = Vector3.Distance(players[1].player.transform.position, JamObject.transform.position);
+
+        Debug.Log("Distance p1 to jam is: " + p1Distance);
+        Debug.Log("Distance p2 to jam is: " + p2Distance);
     }
     public Text GetTextObject(string name)
     {
@@ -96,6 +111,8 @@ public class GameState : MonoBehaviour
 
         GetTextObject("Player1ComboJuice").text = "Player 1 Combo: " + players[0].player.comboJuice;
         GetTextObject("Player2ComboJuice").text = "Player 2 Combo: " + players[1].player.comboJuice;
+
+        //sliderPlayer1.value = initialDistance/
 
         for (int i = 0; i < players.Length; i++)
 		{
