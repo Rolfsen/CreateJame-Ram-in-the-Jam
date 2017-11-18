@@ -63,6 +63,13 @@ public class GameState : MonoBehaviour
     private GameObject mainCam;
     [SerializeField]
     private GameObject winCam;
+
+	[Header("Sounds")]
+	[SerializeField]
+	AudioSource explotion;
+	[SerializeField]
+	AudioSource bgMusic;
+
     public void PlayerReachedCameraTrigger(PlayerControl player)
     {
         if (player.player == PlayerControl.PlayerID.player1)
@@ -182,6 +189,8 @@ public class GameState : MonoBehaviour
     }
     public void GameEndCinematic()
     {
+		bgMusic.Stop();
+		explotion.Play();
         jumpingPhaseUI.SetActive(true);
         if (winningPlayer == 1)
         {

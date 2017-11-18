@@ -73,6 +73,8 @@ public class PlayerControl : MonoBehaviour
 	List<AudioSource> glassCollision;
 	[SerializeField]
 	List<AudioSource> jump;
+	[SerializeField]
+	AudioSource Hooves;
 
 
 	private void Start()
@@ -273,7 +275,7 @@ public class PlayerControl : MonoBehaviour
 
 	void StartJump(Collider other)
 	{
-
+		Hooves.Stop();
 		int i = UnityEngine.Random.Range(0,jump.Count-1);
 		jump[i].Play();
 		Destroy(other.gameObject);

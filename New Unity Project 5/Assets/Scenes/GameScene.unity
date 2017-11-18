@@ -112,6 +112,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!82 &42144694 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 82659703209839246, guid: ad1b20d7912b08b4d872edc1606f6e11,
+    type: 2}
+  m_PrefabInternal: {fileID: 872465972}
 --- !u!1 &72829813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,6 +1330,11 @@ Transform:
   m_Father: {fileID: 265070837}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &722566992 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 82225943098416420, guid: ad1b20d7912b08b4d872edc1606f6e11,
+    type: 2}
+  m_PrefabInternal: {fileID: 872465972}
 --- !u!1 &726534661
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,6 +1754,16 @@ Prefab:
         type: 2}
       propertyPath: Loop
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82650140555633518, guid: ad1b20d7912b08b4d872edc1606f6e11,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82650140555633518, guid: ad1b20d7912b08b4d872edc1606f6e11,
+        type: 2}
+      propertyPath: Loop
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ad1b20d7912b08b4d872edc1606f6e11, type: 2}
@@ -2324,6 +2344,7 @@ MonoBehaviour:
   - {fileID: 709473298}
   - {fileID: 2041471667}
   - {fileID: 1257786932}
+  Hooves: {fileID: 1354791459}
 --- !u!1001 &1078468743
 Prefab:
   m_ObjectHideFlags: 0
@@ -2642,6 +2663,12 @@ MonoBehaviour:
   - {fileID: 709473298}
   - {fileID: 2041471667}
   - {fileID: 1257786932}
+  Hooves: {fileID: 1354791459}
+--- !u!82 &1354791459 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 82650140555633518, guid: ad1b20d7912b08b4d872edc1606f6e11,
+    type: 2}
+  m_PrefabInternal: {fileID: 872465972}
 --- !u!1001 &1376954341
 Prefab:
   m_ObjectHideFlags: 0
@@ -3097,6 +3124,8 @@ MonoBehaviour:
   winningPlayer: 0
   mainCam: {fileID: 2109531993}
   winCam: {fileID: 1589447098}
+  explotion: {fileID: 722566992}
+  bgMusic: {fileID: 42144694}
 --- !u!1 &1464335204
 GameObject:
   m_ObjectHideFlags: 0
