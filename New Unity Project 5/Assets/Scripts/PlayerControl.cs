@@ -65,6 +65,7 @@ public class PlayerControl : MonoBehaviour
 	GameState gameState;
 	bool isJumpDone;
     public float jumpPowerUsed;
+    private bool inJam=false;
     private bool isJumping=false;
     public bool isLoser=false;
 
@@ -87,10 +88,18 @@ public class PlayerControl : MonoBehaviour
 	GameObject jumpingModels;
 	[SerializeField]
 	GameObject flyingAnimation;
+	[SerializeField]
+	GameObject victoryPos;
+	[SerializeField]
+	GameObject deathAnim;
+    [SerializeField]
+    private float increaseAmount;
+    [SerializeField]
+    private float jumpPhaseSpeed;
+    GameObject currentModel;
+    public bool isWinner=false;
 
-
-
-	private void Start()
+    private void Start()
 	{
 		Debug.Log(Input.GetJoystickNames().Length);
 		rb = GetComponent<Rigidbody>();
@@ -113,8 +122,30 @@ public class PlayerControl : MonoBehaviour
             }
         }
 		int i = UnityEngine.Random.Range(0,runningModels.Count);
-		var currentModel = runningModels[i];
+		currentModel = runningModels[i];
 		currentModel.SetActive(true);
+        InvokeRepeating("SpeedUp", 1.0f, 1.0f);
+    }
+    public void SpeedUp()
+    {
+        if (inJam)
+        {
+            return;
+        }
+        if (isJumping)
+        {
+            return;
+        }
+        if (isLoser)
+        {
+            return;
+        }
+        if (isWinner)
+        {
+            return;
+        }
+            moveSpeed += increaseAmount;
+            Debug.Log("Sped Up. Speed now: " + moveSpeed);
     }
 	KeyCode GetCurrentPowerUpKey()
 	{
@@ -188,6 +219,7 @@ public class PlayerControl : MonoBehaviour
 
         if (isJumping && isLoser)
         {
+
             switch (player)
             {
                 case PlayerID.player1:
@@ -202,8 +234,9 @@ public class PlayerControl : MonoBehaviour
                         this.isJumping = false;
                         mainGameController.GameEndCinematic();
                         mainGameController.blockJam = true;
-                        
-                    }
+						flyingAnimation.SetActive(false);
+						deathAnim.SetActive(true);
+					}
                     break;
                 case PlayerID.player2:
                     if (this.transform.position.x < 0)
@@ -217,10 +250,20 @@ public class PlayerControl : MonoBehaviour
                         this.isJumping = false;
                         mainGameController.GameEndCinematic();
                         mainGameController.blockJam = true;
-                    }
+						flyingAnimation.SetActive(false);
+						deathAnim.SetActive(true);
+					}
                     break;
             }
         }
+	}
+
+	public void Victory ()
+	{
+		currentModel.SetActive(false);
+		flyingAnimation.SetActive(false);
+		victoryPos.SetActive(true);
+        isWinner = true;
 	}
 
     private void WrongKeyPress(KeyCode ButtonPressed)
@@ -265,10 +308,13 @@ public class PlayerControl : MonoBehaviour
             case ("switchCameraToJump"):
                 mainGameController.PlayerReachedCameraTrigger(this);
                 Debug.Log("Hit Camera Trigger");
+                moveSpeed = jumpPhaseSpeed;
                 break;
             case ("loseTrigger"):
-                // we are over the jam... SLAM
-                this.moveSpeed = 0;
+				// we are over the jam... SLAM
+				flyingAnimation.SetActive(false);
+				deathAnim.SetActive(true);
+				this.moveSpeed = 0;
                 Vector3 TempPos = this.GetComponent<Rigidbody>().transform.position;
                 TempPos.x = 0;
                 TempPos.y = 2;
@@ -276,6 +322,7 @@ public class PlayerControl : MonoBehaviour
                 this.GetComponent<Rigidbody>().transform.position = TempPos;
                 //TempPos.y = 0;
                 //this.GetComponent<Rigidbody>().velocity = TempPos;
+                inJam = true;
                 this.isJumping = false;
                 switch (player)
                 {
@@ -286,6 +333,7 @@ public class PlayerControl : MonoBehaviour
                         mainGameController.winningPlayer = 1;
                         break;
                 }
+				victoryPos.SetActive(false);
                 mainGameController.GameEndCinematic();
                 break;
 			case ("jam"):
@@ -298,9 +346,16 @@ public class PlayerControl : MonoBehaviour
 		}
 	}
 
+	public void HideVictoryPose()
+	{
+		victoryPos.SetActive(false);
+	}
+
 	void StartJump(Collider other)
 	{
 		Hooves.Stop();
+		currentModel.SetActive(false);
+		flyingAnimation.SetActive(true);
 		int i = UnityEngine.Random.Range(0,jump.Count-1);
 		jump[i].Play();
 		Destroy(other.gameObject);
