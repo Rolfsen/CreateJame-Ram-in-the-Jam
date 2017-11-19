@@ -87,7 +87,10 @@ public class PlayerControl : MonoBehaviour
 	GameObject jumpingModels;
 	[SerializeField]
 	GameObject flyingAnimation;
-
+	[SerializeField]
+	GameObject victoryPos;
+	[SerializeField]
+	GameObject deathAnim;
 
 
 	private void Start()
