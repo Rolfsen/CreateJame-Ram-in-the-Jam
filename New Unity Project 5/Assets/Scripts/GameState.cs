@@ -232,8 +232,12 @@ public class GameState : MonoBehaviour
 
 	[SerializeField]
 	float afterGameTime;
+    [SerializeField]
+    private ButtonPressingAnim ButtonPressingAnim1;
+    [SerializeField]
+    private ButtonPressingAnim ButtonPressingAnim2;
 
-	IEnumerator GoToMenu()
+    IEnumerator GoToMenu()
 	{
 		yield return new WaitForSeconds(afterGameTime);
 		SceneManager.LoadScene(0);
@@ -254,12 +258,14 @@ public class GameState : MonoBehaviour
                 int getKey = UnityEngine.Random.Range(0, forceKeys.Count);
                 player1Key = forceKeys[getKey];
                 GetTextObject("Player1QTE").text = "\"" + forceKeys[getKey]+"\"";
+                ButtonPressingAnim1.SetActiveButton(forceKeys[getKey]);
             }
             else if (player == PlayerControl.PlayerID.player2)
             {
                 int getKey = UnityEngine.Random.Range(0, forceKeys.Count);
                 player2Key = forceKeys[getKey];
                 GetTextObject("Player2QTE").text = "\"" + forceKeys[getKey]+"\"";
+                ButtonPressingAnim2.SetActiveButton(forceKeys[getKey]);
             }
         }
     }
