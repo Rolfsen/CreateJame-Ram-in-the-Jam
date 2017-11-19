@@ -271,6 +271,19 @@ public class GameState : MonoBehaviour
         }
     }
 
+    public void BadKeyPress(string keyName, PlayerControl.PlayerID player)
+    {
+        switch (player)
+        {
+            case PlayerControl.PlayerID.player1:
+                ButtonPressingAnim1.BadButton(keyName);
+                break;
+            case PlayerControl.PlayerID.player2:
+                ButtonPressingAnim2.BadButton(keyName);
+                break;
+        }
+    }
+
     public void GoodPress(string currentKey, PlayerControl.PlayerID player)
     {
         switch (player)

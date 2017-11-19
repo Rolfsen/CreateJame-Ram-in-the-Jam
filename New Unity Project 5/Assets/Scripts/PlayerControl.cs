@@ -271,7 +271,24 @@ public class PlayerControl : MonoBehaviour
 		error.Play();
         comboJuice = 0;
         jumpForce -= increaseForce;
-
+        string keyName = "A";
+        if (ButtonPressed == AButton)
+        {
+                keyName = "A";
+        }
+        if (ButtonPressed == BButton)
+        {
+            keyName = "B";
+        }
+        if (ButtonPressed == XButton)
+        { 
+            keyName = "X";
+        }
+        if (ButtonPressed == YButton)
+        {
+            keyName = "Y";
+        }
+        mainGameController.BadKeyPress(keyName, player);
 		// Bad things happen
     }
 
