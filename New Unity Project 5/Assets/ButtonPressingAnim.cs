@@ -11,6 +11,8 @@ public class ButtonPressingAnim : MonoBehaviour {
     private GameObject XButton;
     [SerializeField]
     private GameObject YButton;
+    [SerializeField]
+    private FloatyFadyScript GoodJobArrow;
     // Use this for initialization
     void Start () {
         HideAllButtons();
@@ -39,6 +41,28 @@ public class ButtonPressingAnim : MonoBehaviour {
                 break;
             case "Y":
                 YButton.SetActive(true);
+                break;
+        }
+    }
+    public void GoodButton(string buttonName)
+    {
+        switch (buttonName)
+        {
+            case "A":
+                GoodJobArrow.transform.position = AButton.transform.position;
+                GoodJobArrow.Reset();
+                break;
+            case "B":
+                GoodJobArrow.transform.position = BButton.transform.position;
+                GoodJobArrow.Reset();
+                break;
+            case "X":
+                GoodJobArrow.transform.position = XButton.transform.position;
+                GoodJobArrow.Reset();
+                break;
+            case "Y":
+                GoodJobArrow.transform.position = YButton.transform.position;
+                GoodJobArrow.Reset();
                 break;
         }
     }

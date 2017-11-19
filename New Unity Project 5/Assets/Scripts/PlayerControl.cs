@@ -278,7 +278,10 @@ public class PlayerControl : MonoBehaviour
     void CorrectKeyPress(KeyCode buttonPressed)
 	{
 		correctPress.Play();
-		jumpForce += increaseForce;
+        string CurrentKey = mainGameController.GetCurrentKey(player);
+        mainGameController.GoodPress(CurrentKey,player);
+
+        jumpForce += increaseForce;
 		gameState.GetNewKey(player);
         if (comboJuice + additionPerPress < MAX_FORCE)
         {
@@ -288,6 +291,7 @@ public class PlayerControl : MonoBehaviour
         {
             comboJuice = MAX_FORCE;
         }
+        
     }
 
 	private void FixedUpdate()

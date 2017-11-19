@@ -141,7 +141,8 @@ public class GameState : MonoBehaviour
         GetTextObject("Player2ComboJuice").text = "Player 2 Combo: " + Math.Round(players[1].player.comboJuice,2);
 
         //sliderPlayer1.value = initialDistance/
-
+        sliderPlayer1.value = 1 - (Vector3.Distance(players[0].player.transform.position, JamObject.transform.position) / p1Distance);
+        sliderPlayer2.value = 1 - (Vector3.Distance(players[1].player.transform.position, JamObject.transform.position) / p2Distance);
         for (int i = 0; i < players.Length; i++)
 		{
 			if (players[i].player.transform.position.y > players[i].playerScore)
@@ -267,6 +268,19 @@ public class GameState : MonoBehaviour
                 GetTextObject("Player2QTE").text = "\"" + forceKeys[getKey]+"\"";
                 ButtonPressingAnim2.SetActiveButton(forceKeys[getKey]);
             }
+        }
+    }
+
+    public void GoodPress(string currentKey, PlayerControl.PlayerID player)
+    {
+        switch (player)
+        {
+            case PlayerControl.PlayerID.player1:
+                ButtonPressingAnim1.GoodButton(currentKey);
+                break;
+            case PlayerControl.PlayerID.player2:
+                ButtonPressingAnim2.GoodButton(currentKey);
+                break;
         }
     }
 }
