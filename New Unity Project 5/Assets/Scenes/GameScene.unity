@@ -2992,10 +2992,10 @@ MonoBehaviour:
   - {fileID: 721532220}
   - {fileID: 1184320537}
   - {fileID: 1733928992}
-  jumpingModels: {fileID: 0}
-  flyingAnimation: {fileID: 0}
-  victoryPos: {fileID: 0}
-  deathAnim: {fileID: 0}
+  jumpingModels: {fileID: 905442116}
+  flyingAnimation: {fileID: 1576661828}
+  victoryPos: {fileID: 978224334}
+  deathAnim: {fileID: 1415895745}
 --- !u!1001 &1078468743
 Prefab:
   m_ObjectHideFlags: 0
@@ -3447,10 +3447,10 @@ MonoBehaviour:
   - {fileID: 128039328}
   - {fileID: 1851250080}
   - {fileID: 1272097311}
-  jumpingModels: {fileID: 0}
-  flyingAnimation: {fileID: 0}
-  victoryPos: {fileID: 0}
-  deathAnim: {fileID: 0}
+  jumpingModels: {fileID: 1942172729}
+  flyingAnimation: {fileID: 1380283301}
+  victoryPos: {fileID: 1511883994}
+  deathAnim: {fileID: 617038679}
 --- !u!82 &1354791459 stripped
 AudioSource:
   m_PrefabParentObject: {fileID: 82650140555633518, guid: ad1b20d7912b08b4d872edc1606f6e11,
@@ -5446,7 +5446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1942172730
 Transform:
   m_ObjectHideFlags: 0
