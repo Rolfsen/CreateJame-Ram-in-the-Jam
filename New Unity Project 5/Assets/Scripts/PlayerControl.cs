@@ -65,6 +65,7 @@ public class PlayerControl : MonoBehaviour
 	GameState gameState;
 	bool isJumpDone;
     public float jumpPowerUsed;
+    private bool inJam=false;
     private bool isJumping=false;
     public bool isLoser=false;
 
@@ -91,9 +92,14 @@ public class PlayerControl : MonoBehaviour
 	GameObject victoryPos;
 	[SerializeField]
 	GameObject deathAnim;
+    [SerializeField]
+    private float increaseAmount;
+    [SerializeField]
+    private float jumpPhaseSpeed;
+    GameObject currentModel;
+    public bool isWinner=false;
 
-	GameObject currentModel;
-	private void Start()
+    private void Start()
 	{
 		Debug.Log(Input.GetJoystickNames().Length);
 		rb = GetComponent<Rigidbody>();
@@ -118,6 +124,28 @@ public class PlayerControl : MonoBehaviour
 		int i = UnityEngine.Random.Range(0,runningModels.Count);
 		currentModel = runningModels[i];
 		currentModel.SetActive(true);
+        InvokeRepeating("SpeedUp", 1.0f, 1.0f);
+    }
+    public void SpeedUp()
+    {
+        if (inJam)
+        {
+            return;
+        }
+        if (isJumping)
+        {
+            return;
+        }
+        if (isLoser)
+        {
+            return;
+        }
+        if (isWinner)
+        {
+            return;
+        }
+            moveSpeed += increaseAmount;
+            Debug.Log("Sped Up. Speed now: " + moveSpeed);
     }
 	KeyCode GetCurrentPowerUpKey()
 	{
@@ -235,6 +263,7 @@ public class PlayerControl : MonoBehaviour
 		currentModel.SetActive(false);
 		flyingAnimation.SetActive(false);
 		victoryPos.SetActive(true);
+        isWinner = true;
 	}
 
     private void WrongKeyPress(KeyCode ButtonPressed)
@@ -279,6 +308,7 @@ public class PlayerControl : MonoBehaviour
             case ("switchCameraToJump"):
                 mainGameController.PlayerReachedCameraTrigger(this);
                 Debug.Log("Hit Camera Trigger");
+                moveSpeed = jumpPhaseSpeed;
                 break;
             case ("loseTrigger"):
 				// we are over the jam... SLAM
@@ -292,6 +322,7 @@ public class PlayerControl : MonoBehaviour
                 this.GetComponent<Rigidbody>().transform.position = TempPos;
                 //TempPos.y = 0;
                 //this.GetComponent<Rigidbody>().velocity = TempPos;
+                inJam = true;
                 this.isJumping = false;
                 switch (player)
                 {
