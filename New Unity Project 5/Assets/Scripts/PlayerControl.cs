@@ -92,7 +92,7 @@ public class PlayerControl : MonoBehaviour
 	[SerializeField]
 	GameObject deathAnim;
 
-
+	GameObject currentModel;
 	private void Start()
 	{
 		Debug.Log(Input.GetJoystickNames().Length);
@@ -116,7 +116,7 @@ public class PlayerControl : MonoBehaviour
             }
         }
 		int i = UnityEngine.Random.Range(0,runningModels.Count);
-		var currentModel = runningModels[i];
+		currentModel = runningModels[i];
 		currentModel.SetActive(true);
     }
 	KeyCode GetCurrentPowerUpKey()
@@ -191,6 +191,7 @@ public class PlayerControl : MonoBehaviour
 
         if (isJumping && isLoser)
         {
+
             switch (player)
             {
                 case PlayerID.player1:
@@ -205,8 +206,9 @@ public class PlayerControl : MonoBehaviour
                         this.isJumping = false;
                         mainGameController.GameEndCinematic();
                         mainGameController.blockJam = true;
-                        
-                    }
+						flyingAnimation.SetActive(false);
+						deathAnim.SetActive(true);
+					}
                     break;
                 case PlayerID.player2:
                     if (this.transform.position.x < 0)
@@ -220,7 +222,9 @@ public class PlayerControl : MonoBehaviour
                         this.isJumping = false;
                         mainGameController.GameEndCinematic();
                         mainGameController.blockJam = true;
-                    }
+						flyingAnimation.SetActive(false);
+						deathAnim.SetActive(true);
+					}
                     break;
             }
         }
@@ -270,8 +274,10 @@ public class PlayerControl : MonoBehaviour
                 Debug.Log("Hit Camera Trigger");
                 break;
             case ("loseTrigger"):
-                // we are over the jam... SLAM
-                this.moveSpeed = 0;
+				// we are over the jam... SLAM
+				flyingAnimation.SetActive(false);
+				deathAnim.SetActive(true);
+				this.moveSpeed = 0;
                 Vector3 TempPos = this.GetComponent<Rigidbody>().transform.position;
                 TempPos.x = 0;
                 TempPos.y = 2;
@@ -304,6 +310,8 @@ public class PlayerControl : MonoBehaviour
 	void StartJump(Collider other)
 	{
 		Hooves.Stop();
+		currentModel.SetActive(false);
+		flyingAnimation.SetActive(true);
 		int i = UnityEngine.Random.Range(0,jump.Count-1);
 		jump[i].Play();
 		Destroy(other.gameObject);
