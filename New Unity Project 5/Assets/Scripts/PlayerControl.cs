@@ -302,6 +302,7 @@ public class PlayerControl : MonoBehaviour
                         mainGameController.winningPlayer = 1;
                         break;
                 }
+				victoryPos.SetActive(false);
                 mainGameController.GameEndCinematic();
                 break;
 			case ("jam"):
@@ -312,6 +313,11 @@ public class PlayerControl : MonoBehaviour
 				Debug.LogWarning("Unknown tag: " + other.tag);
 				break;
 		}
+	}
+
+	public void HideVictoryPose()
+	{
+		victoryPos.SetActive(false);
 	}
 
 	void StartJump(Collider other)

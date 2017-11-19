@@ -219,7 +219,9 @@ public class GameState : MonoBehaviour
         winCam.GetComponent<Camera>().enabled = true;
         if (hasAlreadyLost)
         {
-            GetTextObject("Player1Wins").gameObject.SetActive(false);
+			players[0].player.HideVictoryPose();
+			players[1].player.HideVictoryPose();
+			GetTextObject("Player1Wins").gameObject.SetActive(false);
             GetTextObject("Player2Wins").gameObject.SetActive(false);
             GetTextObject("JammedIt").gameObject.SetActive(true);
         }
