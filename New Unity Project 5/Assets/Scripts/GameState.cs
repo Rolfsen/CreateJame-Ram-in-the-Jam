@@ -206,11 +206,13 @@ public class GameState : MonoBehaviour
         jumpingPhaseUI.SetActive(true);
         if (winningPlayer == 1)
         {
+			players[0].player.Victory();
             GetTextObject("Player1Wins").gameObject.SetActive(true);
             winCam.GetComponent<WinCamScript>().SetWinner(1);
         } else
         {
-            GetTextObject("Player2Wins").gameObject.SetActive(true);
+			players[1].player.Victory();
+			GetTextObject("Player2Wins").gameObject.SetActive(true);
             winCam.GetComponent<WinCamScript>().SetWinner(2);
         }
         mainCam.GetComponent<Camera>().enabled = false;

@@ -230,6 +230,13 @@ public class PlayerControl : MonoBehaviour
         }
 	}
 
+	public void Victory ()
+	{
+		currentModel.SetActive(false);
+		flyingAnimation.SetActive(false);
+		victoryPos.SetActive(true);
+	}
+
     private void WrongKeyPress(KeyCode ButtonPressed)
     {
 		error.Play();
