@@ -14,6 +14,24 @@ ModelImporter:
     100012: Ram_Head
     100014: //RootNode
     100016: tail
+    100018: Eye_balls
+    100020: Eyes
+    100022: Head
+    100024: Head 1
+    100026: Horn_left
+    100028: Horn_right
+    100030: pCube9
+    100032: pSphere1
+    100034: pSphere2
+    100036: pSphere3
+    100038: pSphere4
+    100040: transform1
+    100042: transform2
+    100044: transform3
+    100046: transform4
+    100048: transform5
+    100050: transform6
+    100052: transform7
     400000: Body
     400002: Legs
     400004: pCube3
@@ -23,6 +41,24 @@ ModelImporter:
     400012: Ram_Head
     400014: //RootNode
     400016: tail
+    400018: Eye_balls
+    400020: Eyes
+    400022: Head
+    400024: Head 1
+    400026: Horn_left
+    400028: Horn_right
+    400030: pCube9
+    400032: pSphere1
+    400034: pSphere2
+    400036: pSphere3
+    400038: pSphere4
+    400040: transform1
+    400042: transform2
+    400044: transform3
+    400046: transform4
+    400048: transform5
+    400050: transform6
+    400052: transform7
     2300000: Body
     2300002: pCube3
     2300004: pCube4
@@ -30,6 +66,7 @@ ModelImporter:
     2300008: pCube6
     2300010: Ram_Head
     2300012: tail
+    2300014: pCube9
     3300000: Body
     3300002: pCube3
     3300004: pCube4
@@ -37,6 +74,7 @@ ModelImporter:
     3300008: pCube6
     3300010: Ram_Head
     3300012: tail
+    3300014: pCube9
     4300000: pCube3
     4300002: pCube4
     4300004: pCube5
@@ -44,6 +82,7 @@ ModelImporter:
     4300008: Body
     4300010: Ram_Head
     4300012: tail
+    4300014: pCube9
     7400000: Take 001
     9500000: //RootNode
     11100000: //RootNode
